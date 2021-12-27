@@ -19,8 +19,12 @@ class DatabaseSeeder extends Seeder
         $users->password = bcrypt('12345678');
         $users->rol = 'admin';
         $users->telefono = '73053480';
+        $users->status = 'ACTIVO';
 
         $users->save();
+        $this->call(DenominacionSeeder::class);
+        $this->call(CategoriaSeeder::class);
+        $this->call(ProductoSeeder::class);
 
     }
 }

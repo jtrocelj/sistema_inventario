@@ -16,19 +16,19 @@ class CategoriaSeeder extends Seeder
     public function run()
     {
         Categoria::create( [ 
-            'name'=> 'DEPORTIVAS',
+            'nombre'=> 'DEPORTIVAS',
             'image' => 'https://dummyimage.com/200x150/33b4bd/fff'
         ]);
         Categoria::create( [ 
-            'name'=> 'ENDURO',
+            'nombre'=> 'ENDURO',
             'image' => 'https://dummyimage.com/200x150/33b4bd/fff'
         ]);
         Categoria::create( [ 
-            'name'=> 'NAKED',
+            'nombre'=> 'NAKED',
             'image' => 'https://dummyimage.com/200x150/33b4bd/fff'
         ]);
         Categoria::create( [ 
-            'name'=> 'MOTOCROS',
+            'nombre'=> 'MOTOCROS',
             'image' => 'https://dummyimage.com/200x150/33b4bd/fff'
         ]);
     }

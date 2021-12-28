@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Livewire\CategoriasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +30,4 @@ Route::resource('users',App\Http\Controllers\UserController::class)->middleware(
 
 Route::get('/admin/create', [App\Http\Controllers\UserController::class, 'create'])->middleware('auth.admin')->name('admin.create');
 Route::post('users', [App\Http\Controllers\UserController::class, 'store'])->name('users.store');
+Route::get('categorias', CategoriasController::class );

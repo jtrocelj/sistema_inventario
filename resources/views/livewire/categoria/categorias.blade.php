@@ -28,10 +28,7 @@
         <div class="header-body ">
 
         
-          <form class="form-inline">
-            <input class="form-control mr-sm-1" type="search" placeholder="Buscar..." aria-label="Search">
-            <button class="btn btn-dark " type="submit">Buscar</button>
-          </form>
+          
       
           <div class="row align-items-center py-4">
           <br>
@@ -43,11 +40,11 @@
     </div>
     
     <!-- Page content -->
-    <div class="container-fluid mt--8">
-     
-            <br>
-            <!-- Dark table -->
+    <div class="container-fluid mt--9">
+      @include('common.searchbox')
             
+            <!-- Dark table -->
+           
             <div class="row">
               <div class="col">
                 <div class="card bg-default shadow">
@@ -87,7 +84,7 @@
                                                               <td>{{$categoria->nombre}}</td>
                                                               <td class="text-center"> 
                                                                 <span>
-                                                                <img src="{{asset('storage/categoria/' .$categoria->image)}}" class="navbar-brand-img" height="70" width="80px" class="rounded">
+                                                                <img src="{{asset('storage/categoria/' .$categoria->image)}}" class="navbar-brand-img avatar rounded-circle" height="70" width="80px" class="rounded">
                                                                 </span>   
                                                                 
                                                               </td>
@@ -112,7 +109,7 @@
                                                           </tbody>
                                                           
                                                       </table>
-                                                                       
+                                                                  {{ $categorias->links() }}     
                   </div>
                                                   
                                             

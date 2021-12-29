@@ -10,21 +10,36 @@ use Livewire\WithPagination;
 
 class CategoriasController extends Component
 {
+    
     use WithFileUploads;
-    use WithPagination;
+    
 
-    public $nombre, $search, $image, $selected_id, $pageTitle, $componentName;
-    private $pagination = 5;
+    public $nombre, $search = '', $image, $selected_id, $pageTitle, $componentName;
+    private $pagination =2;
 
     public function mount(){
         $this->pageTitle = 'Contenido';
         $this->componentName= 'Categorias';
 
     }
-
+    public function paginationView(){
+        return 'vendor.livewire.bootstrap';
+    }
+    
+    
+    
     public function render()
+    
     {
-        $data = Categoria::all();
+
+        if(strlen($this->search) > 0)
+        $data = Categoria::where('nombre', 'like', '%' . $this->search . '%');
+        else
+        $data = Categoria::orderBy('id', 'asc')->paginate($this->pagination);
+
+        
+        
+
         return view('livewire.categoria.categorias',['categorias' => $data])
         ->extends('layouts.main')
         ->section('content');

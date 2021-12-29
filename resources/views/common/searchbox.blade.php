@@ -1,12 +1,8 @@
-<div class="row justify-content-between">
-    <div class="col-lg-4 col-md-4 col-sm-12">
-        <div class="input-group mb-4">
-            <div class="input-group-prepend">
-                <span class="input-group-text input-gp">
-                    <i class="fas fa-search"></i>
-                </span>
-            </div>
-            <input type="text" wire:model="search" placeholder="Buscar.." class="form-control">
-        </div>
-    </div>
-</div>
+<nav class="navbar navbar-expand-lg navbar-light ">
+  
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" name="search" placeholder="Buscar" aria-label="Search">
+      <button class="btn btn-dark" type="submit">Buscar</button>
+    </form>
+  
+</nav>

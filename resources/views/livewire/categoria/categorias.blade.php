@@ -25,6 +25,7 @@
     <div class="header bg-primary pb-6">
       
       <div class="container-fluid">
+      
         <div class="header-body ">
 
         
@@ -91,7 +92,7 @@
 
 
                                                                       <td>
-                                                                          <form action="#" method="POST">
+                                                                         
                                                                           
                                                                               <a class="btn btn-sm btn-success" href="javascript:void(0)"
                                                                               wire:click="Edit({{$categoria->id}})"
@@ -102,7 +103,7 @@
                                                                               <button type="submit" class="btn btn-danger btn-sm" 
                                                                               onclick="Confirm('{{$categoria->id}}')"
                                                                             ><i class="fa fa-fw fa-trash"></i></button>
-                                                                          </form>
+                                                                       
                                                                       </td>
                                                                   </tr>
                                                             @endforeach
@@ -143,12 +144,16 @@
     
 @endsection
 
-@push('js')
+
     <script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.min.js"></script>
     <script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.extension.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function(){
+          window.livewire.on('show-modal', msg =>{
+            $('#theModal').modal('show')
+          });
+
 
         });
     </script>
-    @endpush
+    

@@ -15,7 +15,7 @@ class CategoriasController extends Component
     
 
     public $nombre, $search = '', $image, $selected_id, $pageTitle, $componentName;
-    private $pagination =5;
+    private $pagination =3;
 
     public function mount(){
         $this->pageTitle = 'Contenido';

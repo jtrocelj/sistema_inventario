@@ -29,38 +29,36 @@
         <div class="header-body ">
 
         
-          
+       
       
           <div class="row align-items-center py-4">
           <br>
           
           </div>
-          @include('livewire.categoria.form')  
+        
         </div>
       </div>
     </div>
     
     <!-- Page content -->
-    <div class="container-fluid mt--9">
+    <div class="container-fluid mt--9 ">
+     
       @include('common.searchbox')
+      
+    
+
             
             <!-- Dark table -->
            
             <div class="row">
               <div class="col">
-                <div class="card bg-default shadow">
+                <div class="card-header bg-transparent border-0">
                   
-                  <div class="card-header bg-transparent border-0">
-                    <h3 class="text-white mb-0">
-                        <b>{{$componentName}} | {{$pageTitle}}</b>
-                    </h3>
-                    <div class="col-lg-50  text-right">
-                    <a href="javascript:void(0)" class="btn btn-sm btn-neutral" data-toggle="modal" data-target="#theModal">Agregar</a>  
+                
+              
                   </div>
-                  </div>
+                  <div class="table-responsive mt--6">
                   
-                  <div class="table-responsive">
-
                                                 
                                               @if ($message = Session::get('success'))
                                               <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -72,16 +70,22 @@
                                                     </div>
                                               @endif
 
-                                                
+                                              <div class="col-lg-40  text-right  ">
+                                                        <a href="{{ route('categoria.create') }}" class="btn btn-sm btn-neutral" >
+                                                        Agregar
+                                                        </a>
+                                                       </div>
                                                       <table class="table align-items-center table-dark table-flush">
                                                       <thead class="thead-dark">
+                                                      <th scope="col" class="sort" data-sort="budget">Id</th>
                                                       <th scope="col" class="sort" data-sort="budget">Descripcion</th>
                                                       <th scope="col" width="10px" class="sort" data-sort="name">Imagen</th>
                                                       <th scope="col">Accion</th>
-
+                                                      
                                                           </thead>
                                                           <tbody class="list">
                                                             @foreach($categorias as $categoria)
+                                                            <td>{{$categoria->id}}</td>
                                                               <td>{{$categoria->nombre}}</td>
                                                               <td class="text-center"> 
                                                                 <span>
@@ -92,18 +96,19 @@
 
 
                                                                       <td>
-                                                                         
+                                                                         <form action="{{ route('categoria.destroy',$categoria->id) }} "  method="POST">
                                                                           
-                                                                              <a class="btn btn-sm btn-success" href="javascript:void(0)"
-                                                                              wire:click="Edit({{$categoria->id}})"
+                                                                              <a class="btn btn-sm btn-success" href="{{ route('categoria.edit',$categoria->id) }}"
                                                                               >
                                                                               <i class="fa fa-fw fa-edit"></i>
                                                                             </a>
                                                                           
+                                                                              @csrf
+                                                                               @method('DELETE')
                                                                               <button type="submit" class="btn btn-danger btn-sm" 
-                                                                              onclick="Confirm('{{$categoria->id}}')"
+                                                                              onclick="return confirmarEliminar()"
                                                                             ><i class="fa fa-fw fa-trash"></i></button>
-                                                                       
+                                                                            </form>
                                                                       </td>
                                                                   </tr>
                                                             @endforeach
@@ -114,13 +119,15 @@
                   </div>
                                                   
                                             
-                </div>   @include('layouts.footers.auth')
+                </div>   
+               
                                         
                                       
                                   
                               
                               
-              </div>
+              </div> @include('layouts.footers.auth')
+              
             </div>
            
     </div>

@@ -9,7 +9,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">
-            <b>{{$componentName}}</b> | {{$selected_id > 0 ? 'EDITAR' : 'CREAR'}}
+            <b>Categorias</b> | Crear
         </h5>
         <h6 class="text-center text-warning " wire:loading>
             Por favor espere

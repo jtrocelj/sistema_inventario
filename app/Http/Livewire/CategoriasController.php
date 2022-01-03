@@ -15,7 +15,7 @@ class CategoriasController extends Component
     
 
     public $nombre, $search = '', $image, $selected_id, $pageTitle, $componentName;
-    private $pagination =5;
+    private $pagination =3;
 
     public function mount(){
         $this->pageTitle = 'Contenido';
@@ -51,16 +51,6 @@ class CategoriasController extends Component
         
         
     }
-            public function Edit($id){
-                    $record = Categoria::find($id, ['id','nombre', 'image']);
-                    $this->nombre = $record->nombre;
-                    $this->selected_id = $record->id;
-                    $this->image = null;
-
-                    $this->emit('show-modal','show modal!');
-            }
-            public function resetUI() {
-
-            }	
+            
 
 }

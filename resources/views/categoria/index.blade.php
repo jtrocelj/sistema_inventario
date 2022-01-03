@@ -9,18 +9,6 @@
 
  <!-- Main content -->
  <div class="main-content" id="panel">
- 
- <script type="text/javascript">
-        function confirmarEliminar(){
-            var res = confirm("Estas seguro que deseas eliminar al usuario?");
-            if(res == true){
-                
-                return true;
-                
-            }else{
-                return false;
-            }
-        }
     </script>
     <div class="header bg-primary pb-6">
       
@@ -71,7 +59,7 @@
                                               @endif
 
                                               <div class="col-lg-40  text-right  ">
-                                                        <a href="{{ route('categoria.create') }}" class="btn btn-sm btn-neutral" >
+                                                        <a href="#" data-toggle="modal" data-target="#ModalCreate" class="btn btn-sm btn-neutral" >
                                                         Agregar
                                                         </a>
                                                        </div>
@@ -96,20 +84,21 @@
 
 
                                                                       <td>
-                                                                         <form action="{{ route('categoria.destroy',$categoria->id) }} "  method="POST">
+                                                                        
                                                                           
-                                                                              <a class="btn btn-sm btn-success" href="{{ route('categoria.edit',$categoria->id) }}"
-                                                                              >
+                                                                              <a class="btn btn-sm btn-success" href="#" data-toggle="modal" data-target="#ModalEdit{{$categoria->id}}">
                                                                               <i class="fa fa-fw fa-edit"></i>
-                                                                            </a>
+                                                                              </a>
                                                                           
                                                                               @csrf
                                                                                @method('DELETE')
                                                                               <button type="submit" class="btn btn-danger btn-sm" 
-                                                                              onclick="return confirmarEliminar()"
+                                                                              data-toggle="modal" data-target="#ModalDelete{{$categoria->id}}"
                                                                             ><i class="fa fa-fw fa-trash"></i></button>
-                                                                            </form>
+                                                                         
                                                                       </td>
+                                                                      @include('categoria.edit')
+                                                                      @include('categoria.delete')
                                                                   </tr>
                                                             @endforeach
                                                           </tbody>
@@ -148,7 +137,9 @@
 
 
         
+    @include('categoria.create')
     
+
 @endsection
 
 

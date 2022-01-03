@@ -65,7 +65,7 @@
             <!-- Navigation -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('categorias.index')}}">
+                    <a class="nav-link" href="{{route('categoria.index')}}">
                         <i class="ni ni-archive-2 text-blue"></i> {{ __('Categorias') }}
                     </a>
                 </li>

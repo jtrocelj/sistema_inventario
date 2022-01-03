@@ -71,8 +71,11 @@ class CategoriaController extends Component
      */
     public function store(Request $request)
     {
-        request()->validate(Categoria::$rules);
+        request()->validate([
+            'nombre' => 'required',
+        ]);
 
+        
         $categoria = Categoria::create($request->all());
 
         return redirect()->route('categoria.index')

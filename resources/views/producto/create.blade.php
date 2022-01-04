@@ -21,42 +21,42 @@
                 <div class="col-sm-12 col-md-12">
                     <div class="form-group">
                     <label>Nombre</label>
-                        <input type="text" class="form-control" required placeholder="Nombre">
+                        <input type="text" class="form-control" name="nombre" required placeholder="Nombre">
                         @error('nombre') <spam class="text-danger er">{{$message}}</spam> @enderror
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-12">
                     <div class="form-group ">
                     <label>Código de Barra</label>
-                        <input type="text" class=" form-control" required placeholder="ej: 011234">
+                        <input type="text" class=" form-control" name="barcode" required placeholder="ej: 011234">
                         @error('barcode') <spam class="text-danger er">{{$message}}</spam> @enderror
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-12">
                     <div class="form-group ">
                     <label>Costo de compra</label>
-                        <input type="text"  data-type='currency'class="form-control" required placeholder="costo">
+                        <input type="text"  data-type='currency'class="form-control" name="costo" required placeholder="costo">
                         @error('costo') <spam class="text-danger er">{{$message}}</spam> @enderror
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-12">
                     <div class="form-group ">
                     <label>Precio de venta</label>
-                        <input type="text" data-type='currency' class=" form-control" required placeholder="precio">
+                        <input type="text" data-type='currency' class=" form-control" name="precio" required placeholder="precio">
                         @error('precio') <spam class="text-danger er">{{$message}}</spam> @enderror
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-12">
                     <div class="form-group ">
                     <label>Stock</label>
-                        <input type="number" class="form-control" required placeholder="ej: 0">
+                        <input type="number" class="form-control" name="stock" required placeholder="ej: 0">
                         @error('stock') <spam class="text-danger er">{{$message}}</spam> @enderror
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-12">
                     <div class="form-group ">
                     <label  class="custom-label">Inventario minimo</label>
-                        <input type="number" class=" form-control" required placeholder="ej: 10">
+                        <input type="number" class=" form-control" name="alerts" required placeholder="ej: 10">
                         @error('alerts') <spam class="text-danger er">{{$message}}</spam> @enderror
                     </div>
                 </div>
@@ -64,23 +64,21 @@
                 <div class="col-sm-12 col-md-8">
                     <div class="form-group ">
                     <label>Categoria</label>
-                        <select class="form-control">
+                        <select class="form-control" name="categoria_id">
                             <option value="Elegir" disabled>Elegir</option>
                             @foreach($categorias as $categoria)
-                            <option value="{{$categoria->id}}" >"{{$categoria->nombre}}"</option>
+                            <option value="{{$categoria->id}}" name="categoria_id">{{$categoria->nombre}}</option>
                             @endforeach
                         </select>
-                        @error('categoriaid') <spam class="text-danger er">{{$message}}</spam> @enderror
+                        @error('categoria_id') <spam class="text-danger er">{{$message}}</spam> @enderror
                     </div>
                 </div>
-                <div class="col-sm-12 col-md-8">
-                    <div class="form-group custom-file ">
-                    <label>Imagen</label>
-                        <input type="file" class="custom-file-input form-control">
-                        <label class="custom-file-label">Imágen</label>
-                        @error('image') <spam class="text-danger er">{{$message}}</spam> @enderror
-                    </div>
-                </div><br>
+                <div class=" col-md-2">
+                        <div class="form-group" >
+                            <strong>{{ __('Imagen') }}:</strong>
+                            {!! Form::file('image', null, array('placeholder' => 'Image','class' => 'form-control')) !!}
+                        </div>
+                    </div><br>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <button type="submit" class="btn btn-success">{{ __('Save') }}</button>
                     </div>

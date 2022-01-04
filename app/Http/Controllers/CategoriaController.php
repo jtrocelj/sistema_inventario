@@ -22,7 +22,7 @@ class CategoriaController extends Component
     
 
     public $nombre, $search = '', $image, $selected_id, $pageTitle, $componentName;
-    private $pagination =3;
+    private $pagination =4;
 
    
     public function paginationView(){

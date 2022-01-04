@@ -94,7 +94,7 @@
                                                                                @method('DELETE')
                                                                               <button type="submit" class="btn btn-danger btn-sm" 
                                                                               data-toggle="modal" data-target="#ModalDelete{{$categoria->id}}" 
-                                                                            ><a onclick="Confirm('{{$categoria->productos->count()}}')" ></a><i class="fa fa-fw fa-trash"></i></button>
+                                                                            ><a></a><i class="fa fa-fw fa-trash"></i></button>
                                                                         
                                                                            
                                                         

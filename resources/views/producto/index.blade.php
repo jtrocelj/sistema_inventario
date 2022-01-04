@@ -92,7 +92,7 @@
                                                                 
                                                               </td>
                                                                       <td>
-                                                                              <a class="btn btn-sm btn-success" href="#" data-toggle="modal" data-target="#ModalEdit{{$producto->id}}">
+                                                                              <a class="btn btn-sm btn-success" href="#" data-toggle="modal" data-target="#ModalEditProducto{{$producto->id}}">
                                                                               <i class="fa fa-fw fa-edit"></i>
                                                                               </a>
                                                                              

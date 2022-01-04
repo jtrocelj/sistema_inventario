@@ -19,13 +19,13 @@
                       
              
                     <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group" required>
-                            <strong>{{ __('Nombre') }}: </strong>
-                            {{ Form::text('nombre',null, ['class' => 'form-control' . ($errors->has('nombre') ? ' is-invalid' : ''), 'placeholder' => 'Nombre']) }}
-                            
-                            {!! $errors->first('nombre', '<div class="invalid-feedback">:message</p>') !!}
-                        </div>
+                    <div class="col-sm-12 col-md-12">
+                    <div class="form-group">
+                    <label>Nombre</label>
+                        <input type="text" class="form-control" required name="nombre" placeholder="Nombre">
+                        @error('nombre') <spam class="text-danger er">{{$message}}</spam> @enderror
                     </div>
+                </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             <strong>{{ __('Imagen') }}:</strong>

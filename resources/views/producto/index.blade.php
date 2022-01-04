@@ -59,7 +59,7 @@
                                               @endif
 
                                               <div class="col-lg-40  text-right  ">
-                                                        <a href="#" data-toggle="modal" data-target="#ModalCreate" class="btn btn-sm btn-neutral" >
+                                                        <a href="#" data-toggle="modal" data-target="#ModalCreateProducto" class="btn btn-sm btn-neutral" >
                                                         Agregar
                                                         </a>
                                                        </div>
@@ -67,46 +67,51 @@
                                                       <thead class="thead-dark">
                                                       <th scope="col" class="sort" data-sort="budget">Id</th>
                                                       <th scope="col" class="sort" data-sort="budget">Descripcion</th>
+                                                      <th scope="col" class="sort" data-sort="budget">Barcode</th>
+                                                      <th scope="col" class="sort" data-sort="budget">Categoria</th>
+                                                      <th scope="col" class="sort" data-sort="budget">Precio</th>
+                                                      <th scope="col" class="sort" data-sort="budget">Stock</th>
+                                                      <th scope="col" class="sort" data-sort="budget">Inv. Minimo</th>
                                                       <th scope="col" width="10px" class="sort" data-sort="name">Imagen</th>
                                                       <th scope="col">Accion</th>
                                                       
                                                           </thead>
                                                           <tbody class="list">
-                                                            @foreach($categorias as $categoria)
-                                                            <td>{{$categoria->id}}</td>
-                                                              <td>{{$categoria->nombre}}</td>
+                                                            @foreach($productos as $producto)
+                                                            <td>{{$producto->id}}</td>
+                                                              <td>{{$producto->nombre}}</td>
+                                                              <td>{{$producto->barcode}}</td>
+                                                              <td>{{$producto->categoria->nombre}}</td>
+                                                              <td>{{$producto->precio}}</td>
+                                                              <td>{{$producto->stock}}</td>
+                                                              <td>{{$producto->alerts}}</td>
                                                               <td class="text-center"> 
                                                                 <span>
-                                                                <img src="{{asset('storage/categoria/' .$categoria->imagen)}}" class="navbar-brand-img avatar rounded-circle" height="70" width="80px" >
+                                                                <img src="{{asset('storage/producto/' .$producto->imagen)}}" class="navbar-brand-img avatar rounded-circle" height="70" width="80px" >
                                                                 </span>   
                                                                 
                                                               </td>
-
-
                                                                       <td>
-                                                                        
-                                                                          
-                                                                              <a class="btn btn-sm btn-success" href="#" data-toggle="modal" data-target="#ModalEdit{{$categoria->id}}">
+                                                                              <a class="btn btn-sm btn-success" href="#" data-toggle="modal" data-target="#ModalEdit{{$producto->id}}">
                                                                               <i class="fa fa-fw fa-edit"></i>
                                                                               </a>
                                                                              
                                                                               @csrf
                                                                                @method('DELETE')
                                                                               <button type="submit" class="btn btn-danger btn-sm" 
-                                                                              data-toggle="modal" data-target="#ModalDelete{{$categoria->id}}" 
-                                                                            ><a onclick="Confirm('{{$categoria->productos->count()}}')" ></a><i class="fa fa-fw fa-trash"></i></button>
+                                                                              data-toggle="modal" data-target="#ModalDelete{{$producto->id}}"><i class="fa fa-fw fa-trash"></i></button>
                                                                         
                                                                            
                                                         
                                                                       </td>
-                                                                      @include('categoria.edit')
-                                                                      @include('categoria.delete')
+                                                                      @include('producto.edit')
+                                                                      @include('producto.delete')
                                                                   </tr>
                                                             @endforeach
                                                           </tbody>
                                                           
                                                       </table>
-                                                                  {{ $categorias->links() }}     
+                                                                  {{ $productos->links() }}     
                   </div>
                                                   
                                             
@@ -139,7 +144,7 @@
 
 
         
-    @include('categoria.create')
+    @include('producto.create')
     
 
 @endsection

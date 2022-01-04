@@ -38,10 +38,6 @@
               <h3 class="text-white mb-0">Tabla de usuarios</h3>
             </div>
             <div class="table-responsive">
-
-                                                
-                                            </div>
-                                        </div>
                                         @if ($message = Session::get('success'))
                                         <div class="alert alert-success alert-dismissible fade show" role="alert">
                                                 <span class="alert-inner--icon"><i class="ni ni-like-2"></i></span>

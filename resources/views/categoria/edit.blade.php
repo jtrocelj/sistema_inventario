@@ -1,4 +1,6 @@
+
 <form action="{{ route('categoria.update', $categoria->id) }}" method="post" enctype="multipart/form-data">
+    
     {{ method_field('patch') }}
     {{ csrf_field() }}
     <div class="modal fade text-left" id="ModalEdit{{$categoria->id}}" tabindex="-1" role="dialog" aria-hidden="true">
@@ -18,17 +20,16 @@
                         </div>
                         </div>
                     </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="col-xs-12 col-sm-10 col-md-11">
                         <div class="form-group">
-                            <strong>{{ __('Imagen') }}:</strong>
-                           
-                          <input type="file" name="image"  class="form-control" >
-                          <img src="{{ asset('storage/categoria/' .$categoria->image)}}" height="70" width="80px">
+                            <strong>{{ __('Imagen') }}:</strong>  
+                            <input type="file" name="image"  class="form-control" width="20px" >
+                            <img src="{{ asset('storage/categoria/' .$categoria->image)}}" height="70" width="80px">
            
                         </div>
                     </div>
                     
-                    <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="col-xs-12 col-sm-12 col-md-12 ml--30">
                         <button type="submit" class="btn btn-warning">{{ __('Editar') }}</button>
                     </div>
                 </div>

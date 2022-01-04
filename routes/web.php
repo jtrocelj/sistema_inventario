@@ -35,3 +35,6 @@ Route::post('users', [App\Http\Controllers\UserController::class, 'store'])->nam
 
 Route::get('categoria', 'App\Http\Controllers\CategoriaController@index')->name('categorias.index');
 Route::resource('categoria',App\Http\Controllers\CategoriaController::class)->middleware('auth');
+
+Route::get('producto', 'App\Http\Controllers\ProductoController@index')->name('productos.index');
+Route::resource('producto',App\Http\Controllers\ProductoController::class)->middleware('auth');

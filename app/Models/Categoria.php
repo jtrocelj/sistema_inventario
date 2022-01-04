@@ -41,6 +41,14 @@ class Categoria extends Model
     {
         return $this->hasMany(Producto::class);
     }
+    public function getImagenAttribute(){
+      if(file_exists('storage/categoria/' . $this->image))
+        return $this->image;
+      else
+        return 'sinImagen.jpg';
+
+
+    }
     
 
 }

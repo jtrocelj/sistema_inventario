@@ -123,7 +123,7 @@ class ProductoController extends Component
         $producto->save();
     
         return redirect()->route('producto.index')
-            ->with('success', 'Producto created successfully.');
+            ->with('success', 'Producto creado exitosamente.');
     }
 
 
@@ -169,7 +169,7 @@ class ProductoController extends Component
             $file = $request->file('image');
             $extention = $file->getClientOriginalExtension();
             $filename = time().'.'. $extention;
-            $file->move('storage/categoria/', $filename);
+            $file->move('storage/producto/', $filename);
             $producto->image =  $filename;
         }
         $producto->update();
@@ -177,5 +177,22 @@ class ProductoController extends Component
         return redirect()->route('producto.index')
             ->with('success', 'Producto actualizado exitosamente');
             
+    }
+    
+    /**
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
+     */
+    public function destroy($id)
+    {
+        $producto = Producto::find($id);
+        $imageName = $producto->image;
+        $producto->delete();
+        if($imageName !=null){
+            unlink('storage/producto/' . $imageName);
+        }
+        return redirect()->route('producto.index')
+            ->with('success', 'Categoria eliminado exitosamente');
     }
 }

@@ -77,7 +77,7 @@
                                                               <td>{{$categoria->nombre}}</td>
                                                               <td class="text-center"> 
                                                                 <span>
-                                                                <img src="{{asset('storage/categoria/' .$categoria->imagen)}}" class="navbar-brand-img avatar rounded-circle" height="70" width="80px" >
+                                                                <img src="{{asset('storage/categoria/' .$categoria->imagen)}}" class="navbar-brand-img  rounded-circle" height="60" width="60px" >
                                                                 </span>   
                                                                 
                                                               </td>

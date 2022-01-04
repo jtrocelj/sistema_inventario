@@ -73,10 +73,10 @@
                         @error('categoria_id') <spam class="text-danger er">{{$message}}</spam> @enderror
                     </div>
                 </div>
-                <div class=" col-md-2">
+                <div class=" col-md-12">
                         <div class="form-group" >
                             <strong>{{ __('Imagen') }}:</strong>
-                            {!! Form::file('image', null, array('placeholder' => 'Image','class' => 'form-control')) !!}
+                            <input type="file" class=" form-control" name="image">
                         </div>
                     </div><br>
                     <div class="col-xs-12 col-sm-12 col-md-12">

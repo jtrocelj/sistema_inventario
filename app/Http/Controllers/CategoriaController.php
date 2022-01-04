@@ -102,7 +102,7 @@ class CategoriaController extends Component
         $categoria->save();
     
         return redirect()->route('categoria.index')
-            ->with('success', 'Categoria created successfully.');
+            ->with('success', 'Categoria creado exitosamente.');
     }
 
     
@@ -162,7 +162,7 @@ class CategoriaController extends Component
         $categoria->update();
        
         return redirect()->route('categoria.index')
-            ->with('success', 'Categoria updated successfully');
+            ->with('success', 'Categoria actualizado exitosamente.');
             
     }
 
@@ -180,7 +180,7 @@ class CategoriaController extends Component
             unlink('storage/categoria/' . $imageName);
         }
         return redirect()->route('categoria.index')
-            ->with('success', 'Categoria deleted successfully');
+            ->with('success', 'Categoria eliminado exitosamente.');
     }
    
 }

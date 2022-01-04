@@ -87,7 +87,7 @@
                                                               <td>{{$producto->alerts}}</td>
                                                               <td class="text-center"> 
                                                                 <span>
-                                                                <img src="{{asset('storage/producto/' .$producto->imagen)}}" class="navbar-brand-img avatar rounded-circle" height="70" width="80px" >
+                                                                <img src="{{asset('storage/producto/' .$producto->imagen)}}" class="navbar-brand-img  rounded-circle" height="60" width="60px" >
                                                                 </span>   
                                                                 
                                                               </td>
@@ -99,7 +99,7 @@
                                                                               @csrf
                                                                                @method('DELETE')
                                                                               <button type="submit" class="btn btn-danger btn-sm" 
-                                                                              data-toggle="modal" data-target="#ModalDelete{{$producto->id}}"><i class="fa fa-fw fa-trash"></i></button>
+                                                                              data-toggle="modal" data-target="#ModalDeleteProducto{{$producto->id}}"><i class="fa fa-fw fa-trash"></i></button>
                                                                         
                                                                            
                                                         

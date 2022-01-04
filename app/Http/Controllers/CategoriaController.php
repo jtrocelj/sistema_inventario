@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Storage;
 use Livewire\WithFileUploads;
 use Livewire\WithPagination;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 /**
  * Class CategoriaController
@@ -27,7 +28,13 @@ class CategoriaController extends Component
         return 'vendor.livewire.bootstrap';
     }
     
-    
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => ['required', 'string', 'max:255'],
+            
+        ]);
+    }
     
     /**
      * Display a listing of the resource.
@@ -71,17 +78,33 @@ class CategoriaController extends Component
      */
     public function store(Request $request)
     {
-        request()->validate([
-            'nombre' => 'required',
-        ]);
+        $rules = [
+            'nombre' => 'required|unique:categorias|min:3'
+        ];
+        $messages = [
+            'nombre.required' => 'Nombre de la categoria es requerido',
+            'nombre.unique' => 'La categoria ya existe',
+            'nombre.min' => 'El nombre de la categoria debe tener al menos 3 caracteres',
+        ];
 
-        
-        $categoria = Categoria::create($request->all());
+       
+        $categoria = new Categoria();
+        $categoria->nombre = $request->nombre;
 
+        if($request->hasfile('image')){
+            $file = $request->file('image');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time().'.'. $extention;
+            $file->move('storage/categoria/', $filename);
+            $categoria->image =  $filename;
+        }
+        $categoria->save();
+    
         return redirect()->route('categoria.index')
             ->with('success', 'Categoria created successfully.');
     }
 
+    
     /**
      * Display the specified resource.
      *
@@ -115,14 +138,23 @@ class CategoriaController extends Component
      * @param  Categoria $categoria
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Categoria $categoria)
+    public function update(Request $request, $id)
     {
-        request()->validate(Categoria::$rules);
+        
+        $categoria = Categoria::find($id);
+        
+        $categoria->nombre = $request->nombre;
+        $categoria->image= $request->image;
+        
+        $categoria->save();
+       
 
-        $categoria->update($request->all());
+       
+
 
         return redirect()->route('categoria.index')
             ->with('success', 'Categoria updated successfully');
+            
     }
 
     /**

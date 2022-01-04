@@ -14,13 +14,18 @@
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             <strong>{{ __('Nombre') }}:</strong>
-                            {!! Form::text('nombre', $categoria->nombre, array('placeholder' => 'Name','class' => 'form-control')) !!}
+                            {{ Form::text('nombre',$categoria->nombre, ['class' => 'form-control' . ($errors->has('nombre') ? ' is-invalid' : ''), 'placeholder' => 'Nombre']) }}
+                            
+                            {!! $errors->first('nombre', '<div class="invalid-feedback">:message</p>') !!}
+                        </div>
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             <strong>{{ __('Imagen') }}:</strong>
                             {!! Form::text('image', $categoria->image, array('placeholder' => 'Imagen','class' => 'form-control')) !!}
+                          
+           
                         </div>
                     </div>
                     

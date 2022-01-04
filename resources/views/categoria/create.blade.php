@@ -28,8 +28,8 @@
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <strong>{{ __('Image') }}:</strong>
-                            {!! Form::text('image', null, array('placeholder' => 'Image','class' => 'form-control')) !!}
+                            <strong>{{ __('Imagen') }}:</strong>
+                            {!! Form::file('image', null, array('placeholder' => 'Image','class' => 'form-control')) !!}
                         </div>
                     </div>
                    

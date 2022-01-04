@@ -89,13 +89,13 @@
                                                                               <a class="btn btn-sm btn-success" href="#" data-toggle="modal" data-target="#ModalEdit{{$categoria->id}}">
                                                                               <i class="fa fa-fw fa-edit"></i>
                                                                               </a>
-                                                                          
+                                                                             
                                                                               @csrf
                                                                                @method('DELETE')
                                                                               <button type="submit" class="btn btn-danger btn-sm" 
-                                                                              data-toggle="modal" data-target="#ModalDelete{{$categoria->id}}"
-                                                                            ><i class="fa fa-fw fa-trash"></i></button>
-                                                                         
+                                                                              data-toggle="modal" data-target="#ModalDelete{{$categoria->id}}" 
+                                                                            ><a onclick="Confirm('{{$categoria->productos->count()}}')" ></a><i class="fa fa-fw fa-trash"></i></button>
+                                                                        
                                                                       </td>
                                                                       @include('categoria.edit')
                                                                       @include('categoria.delete')
@@ -153,5 +153,9 @@
 
 
         });
+
+      
+        
+
     </script>
-    
+  

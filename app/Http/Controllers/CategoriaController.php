@@ -173,8 +173,12 @@ class CategoriaController extends Component
      */
     public function destroy($id)
     {
-        $categoria = Categoria::find($id)->delete();
-
+        $categoria = Categoria::find($id);
+        $imageName = $categoria->image;
+        $categoria->delete();
+        if($imageName !=null){
+            unlink('storage/categoria/' . $imageName);
+        }
         return redirect()->route('categoria.index')
             ->with('success', 'Categoria deleted successfully');
     }

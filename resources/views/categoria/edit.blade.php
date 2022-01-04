@@ -14,17 +14,16 @@
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             <strong>{{ __('Nombre') }}:</strong>
-                            {{ Form::text('nombre',$categoria->nombre, ['class' => 'form-control' . ($errors->has('nombre') ? ' is-invalid' : ''), 'placeholder' => 'Nombre']) }}
-                            
-                            {!! $errors->first('nombre', '<div class="invalid-feedback">:message</p>') !!}
+                          <input type="text" name="nombre" value ="{{$categoria->nombre}}" class="form-control" required>
                         </div>
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             <strong>{{ __('Imagen') }}:</strong>
-                            {!! Form::text('image', $categoria->image, array('placeholder' => 'Imagen','class' => 'form-control')) !!}
-                          
+                           
+                          <input type="file" name="image"  class="form-control" >
+                          <img src="{{ asset('storage/categoria/' .$categoria->image)}}" height="70" width="80px">
            
                         </div>
                     </div>

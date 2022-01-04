@@ -10,6 +10,7 @@ use Livewire\WithFileUploads;
 use Livewire\WithPagination;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\File;
 
 /**
  * Class CategoriaController
@@ -144,14 +145,22 @@ class CategoriaController extends Component
         $categoria = Categoria::find($id);
         
         $categoria->nombre = $request->nombre;
-        $categoria->image= $request->image;
         
-        $categoria->save();
+        
+        if($request->hasfile('image')){
+            $destination = 'storage/categoria/'.$categoria->image;
+            if(File::exists($destination)){
+                File::delete($destination);
+            }
+
+            $file = $request->file('image');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time().'.'. $extention;
+            $file->move('storage/categoria/', $filename);
+            $categoria->image =  $filename;
+        }
+        $categoria->update();
        
-
-       
-
-
         return redirect()->route('categoria.index')
             ->with('success', 'Categoria updated successfully');
             

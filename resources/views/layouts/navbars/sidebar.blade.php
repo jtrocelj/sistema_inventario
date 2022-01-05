@@ -77,7 +77,7 @@
               
 
                 <li class="nav-item">
-                    <a class="nav-link" >
+                    <a class="nav-link" href="{{route('pos.index')}}">
                         <i class="ni ni-shop text-blue "></i> {{ __('Vender') }}
                     </a>
                 </li>

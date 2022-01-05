@@ -41,3 +41,6 @@ Route::resource('producto',App\Http\Controllers\ProductoController::class)->midd
 
 Route::get('denominacion', 'App\Http\Controllers\DenominacionController@index')->name('denominacions.index');
 Route::resource('denominacion',App\Http\Controllers\DenominacionController::class)->middleware('auth');
+
+
+Route::get('pos', 'App\Http\Controllers\PosController@index')->name('pos.index');

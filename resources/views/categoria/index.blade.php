@@ -9,11 +9,8 @@
 
  <!-- Main content -->
  <div class="main-content" id="panel">
-    </script>
     <div class="header bg-primary pb-6">
-      
       <div class="container-fluid">
-      
         <div class="header-body ">
 
         

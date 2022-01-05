@@ -1,5 +1,5 @@
 <?php
- $total = 0;
+ $total = 10;
  $cart = [];
  $itemsQuantity = '';
 ?>
@@ -9,7 +9,7 @@
     @extends('layouts.main')
 
 
-<div>
+<div  class="container-fluid mt--4 ">
     <style></style>
 
     <div class="row layout-top-spacing">

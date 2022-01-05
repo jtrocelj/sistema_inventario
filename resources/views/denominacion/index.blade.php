@@ -78,7 +78,7 @@
                                                               <td class="text-center">Bs.{{number_format($denominacion->valor,2)}}</td>
                                                               <td class="text-center"> 
                                                                 <span>
-                                                                <img src="{{asset('storage/denominacion/' .$denominacion->imagen)}}" class="navbar-brand-img  rounded-circle" height="60" width="60px" >
+                                                                <img src="{{asset('storage/denominacion/' .$denominacion->imagen)}}" class="navbar-brand-img  " height="60" width="60px" >
                                                                 </span>   
                                                                 
                                                               </td>

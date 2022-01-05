@@ -18,7 +18,7 @@ class DenominacionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public $nombre, $search = '', $image, $selected_id, $pageTitle, $componentName;
+    public $tipo, $valor,$search = '', $image, $selected_id, $pageTitle, $componentName;
     private $pagination =4;
 
    
@@ -95,9 +95,59 @@ class DenominacionController extends Controller
         return redirect()->route('denominacion.index')
             ->with('success', 'Denominacion creado exitosamente.');
     }
+    public function edit($id)
+    {
+        $denominacion = Denominacion::find($id);
 
+        return view('denominacion.edit', compact('denominacion'));
+    }
 
-   
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @param  Categoria $categoria
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        
+        $denominacion = Denominacion::find($id);
+        
+        $denominacion->tipo = $request->tipo;
+        $denominacion->valor = $request->valor;
+        
+        
+        if($request->hasfile('image')){
+            $destination = 'storage/denominacion/'.$denominacion->image;
+            if(File::exists($destination)){
+                File::delete($destination);
+            }
+
+            $file = $request->file('image');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time().'.'. $extention;
+            $file->move('storage/denominacion/', $filename);
+            $denominacion->image =  $filename;
+        }
+        $denominacion->update();
+       
+        return redirect()->route('denominacion.index')
+            ->with('success', 'Denominacion actualizado exitosamente.');
+            
+    }
+
+    public function destroy($id)
+    {
+        $denominacion = Denominacion::find($id);
+        $imageName = $denominacion->image;
+        $denominacion->delete();
+        if($imageName !=null){
+            unlink('storage/denominacion/' . $imageName);
+        }
+        return redirect()->route('denominacion.index')
+            ->with('success', 'Denominación eliminado exitosamente.');
+    }
     
 
 }

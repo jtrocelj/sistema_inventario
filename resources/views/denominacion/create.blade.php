@@ -9,7 +9,7 @@
                 
 
                 <div class="modal-header">
-                    <h4 class="modal-title">{{ __('Crear nueva Denomiación') }}</h4>
+                    <h4 class="modal-title">{{ __('Crear nueva Denominación') }}</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>

@@ -1,3 +1,4 @@
+
 <div class="connect-sorting">
 <div class="connect-sorting-content">
     <div class="card simple-title-task ui-sortable-handle">
@@ -6,8 +7,8 @@
         @if($total > 0)
         <div class="table-responsive tblscroll" style="max-height: 650px; overflow:hidden">
 
-            <table class="table table-bordered table-striped mt-1">
-                <thead class="text-white" style="background: #172B4D">
+            <table class="table table-dark table-flush mt-1">
+                <thead class=" thead-dark text-white " >
                     <tr>
                         <th width="10%"></th>
                         <th class="table-th text-left text-white">DESCRIPCIÓN</th>
@@ -66,12 +67,19 @@
             </table>
         </div>
         @else
-        <h5 class="text-center text-muted">Agrega productos a la venta</h5>
+        <div style="border:5px solid ;border-radius:10px;">
+        <h3 class="text-center text-muted">Agregar productos a la venta</h3>
+        </div>
+       
         @endif
-
-        <div wire:loading.inline wire:target="saveSale">
+     
+      <div  wire:loading.inline wire:target="saveSale"  >
             <h4 class="text-danger text-center">Guardando Venta...</h4>
         </div>
+      
+       
+      
+       
 
         </div>
     </div>

@@ -1,4 +1,8 @@
-
+<?php
+ $total = 0;
+ $cart = [];
+ $itemsQuantity = '';
+?>
 @section('content')
     @include('layouts.headers.cards')
     

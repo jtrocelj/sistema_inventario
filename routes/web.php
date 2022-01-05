@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 
 use App\Http\Controllers\CategoriaController;
+use App\Http\Livewire\PosController;
 
 
 /*
@@ -43,4 +44,4 @@ Route::get('denominacion', 'App\Http\Controllers\DenominacionController@index')-
 Route::resource('denominacion',App\Http\Controllers\DenominacionController::class)->middleware('auth');
 
 
-Route::get('pos', 'App\Http\Controllers\PosController@index')->name('pos.index');
+Route::get('pos',PosController::class);

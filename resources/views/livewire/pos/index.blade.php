@@ -1,8 +1,4 @@
-<?php
- $total = 10;
- $cart = [];
- $itemsQuantity = '';
-?>
+
 @section('content')
     @include('layouts.headers.cards')
     
@@ -14,12 +10,12 @@
 
     <div class="row layout-top-spacing">
     <div class="col-sm-12 col-md-8">
-        @include('pos.partials.detalle')
+        @include('livewire.pos.partials.detalle')
     </div>
     <div class="col-sm-12 col-md-4">
-    @include('pos.partials.total')
+    @include('livewire.pos.partials.total')
 
-    @include('pos.partials.monedas')
+    @include('livewire.pos.partials.monedas')
     </div>
 
     </div>

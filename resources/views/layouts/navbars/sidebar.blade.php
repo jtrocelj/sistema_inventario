@@ -77,7 +77,7 @@
               
 
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" >
                         <i class="ni ni-shop text-blue "></i> {{ __('Ventas') }}
                     </a>
                 </li>
@@ -102,7 +102,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{route('denominacion.index')}}">
                         <i class="ni ni-money-coins text-blue"></i> {{ __('Monedas') }}
                     </a>
                 </li>

@@ -65,16 +65,16 @@
                                                        </div>
                                                       <table class="table align-items-center table-dark table-flush">
                                                       <thead class="thead-dark">
-                                                      <th scope="col" class="sort" data-sort="budget">Id</th>
-                                                      <th scope="col" class="sort" data-sort="budget">Descripcion</th>
-                                                      <th scope="col" width="10px" class="sort" data-sort="name">Imagen</th>
-                                                      <th scope="col">Accion</th>
+                                                      <th scope="col" class="sort text-center" data-sort="budget">Id</th>
+                                                      <th scope="col" class="sort text-center" data-sort="budget">Descripción</th>
+                                                      <th scope="col"  class="sort text-center" data-sort="name">Imagen</th>
+                                                      <th scope="col" class="sort text-center" data-sort="name">Acción</th>
                                                       
                                                           </thead>
                                                           <tbody class="list">
                                                             @foreach($categorias as $categoria)
                                                             <td>{{$categoria->id}}</td>
-                                                              <td>{{$categoria->nombre}}</td>
+                                                              <td class="text-center">{{$categoria->nombre}}</td>
                                                               <td class="text-center"> 
                                                                 <span>
                                                                 <img src="{{asset('storage/categoria/' .$categoria->imagen)}}" class="navbar-brand-img  rounded-circle" height="60" width="60px" >
@@ -83,7 +83,7 @@
                                                               </td>
 
 
-                                                                      <td>
+                                                                      <td class="text-center">
                                                                         
                                                                           
                                                                               <a class="btn btn-sm btn-success" href="#" data-toggle="modal" data-target="#ModalEdit{{$categoria->id}}">

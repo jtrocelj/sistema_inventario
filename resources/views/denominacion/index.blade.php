@@ -59,59 +59,56 @@
                                               @endif
 
                                               <div class="col-lg-40  text-right  ">
-                                                        <a href="#" data-toggle="modal" data-target="#ModalCreateProducto" class="btn btn-sm btn-neutral" >
+                                                        <a href="#" data-toggle="modal" data-target="#ModalCreateMonedas" class="btn btn-sm btn-neutral" >
                                                         Agregar
                                                         </a>
                                                        </div>
                                                       <table class="table align-items-center table-dark table-flush">
                                                       <thead class="thead-dark">
-                                                     
-                                                      <th scope="col" class="sort" data-sort="budget">Descripción</th>
-                                                      <th scope="col" class="sort" data-sort="budget">Barcode</th>
-                                                      <th scope="col" class="sort" data-sort="budget">Categoría</th>
-                                                      <th scope="col" class="sort" data-sort="budget">Precio</th>
-                                                      <th scope="col" class="sort" data-sort="budget">Stock</th>
-                                                      <th scope="col" class="sort" data-sort="budget">Inv. Mínimo</th>
-                                                      <th scope="col" width="10px" class="sort" data-sort="name">Imagen</th>
-                                                      <th scope="col">Acción</th>
+                                                      <th scope="col" class="sort" data-sort="budget">Id</th>
+                                                      <th scope="col" class="sort text-center" data-sort="budget">Tipo</th>
+                                                      <th scope="col" class="sort text-center" data-sort="budget">Valor</th>
+                                                      <th scope="col"  class="sort text-center" data-sort="name">Imagen</th>
+                                                      <th scope="col" class="sort text-center" data-sort="name">Acción</th>
                                                       
                                                           </thead>
                                                           <tbody class="list">
-                                                            @foreach($productos as $producto)
-                                                           
-                                                              <td class="text-center">{{$producto->nombre}}</td>
-                                                              <td class="text-center">{{$producto->barcode}}</td>
-                                                              <td class="text-center">{{$producto->categoria->nombre}}</td>
-                                                              <td class="text-center">{{$producto->precio}}</td>
-                                                              <td class="text-center">{{$producto->stock}}</td>
-                                                              <td class="text-center">{{$producto->alerts}}</td>
+                                                            @foreach($denominacions as $denominacion)
+                                                            <td>{{$denominacion->id}}</td>
+                                                              <td class="text-center">{{$denominacion->tipo}}</td>
+                                                              <td class="text-center">Bs.{{number_format($denominacion->valor,2)}}</td>
                                                               <td class="text-center"> 
                                                                 <span>
-                                                                <img src="{{asset('storage/producto/' .$producto->imagen)}}" class="navbar-brand-img  rounded-circle" height="60" width="60px" >
+                                                                <img src="{{asset('storage/denominacion/' .$denominacion->imagen)}}" class="navbar-brand-img  rounded-circle" height="60" width="60px" >
                                                                 </span>   
                                                                 
                                                               </td>
-                                                                      <td>
-                                                                              <a class="btn btn-sm btn-success" href="#" data-toggle="modal" data-target="#ModalEditProducto{{$producto->id}}">
+
+
+                                                                      <td class="text-center">
+                                                                        
+                                                                          
+                                                                              <a class="btn btn-sm btn-success" href="#" data-toggle="modal" data-target="#ModalEditMonedas{{$denominacion->id}}">
                                                                               <i class="fa fa-fw fa-edit"></i>
                                                                               </a>
                                                                              
                                                                               @csrf
                                                                                @method('DELETE')
                                                                               <button type="submit" class="btn btn-danger btn-sm" 
-                                                                              data-toggle="modal" data-target="#ModalDeleteProducto{{$producto->id}}"><i class="fa fa-fw fa-trash"></i></button>
+                                                                              data-toggle="modal" data-target="#ModalDeleteMonedas{{$denominacion->id}}" 
+                                                                            ><a></a><i class="fa fa-fw fa-trash"></i></button>
                                                                         
                                                                            
                                                         
                                                                       </td>
-                                                                      @include('producto.edit')
-                                                                      @include('producto.delete')
+                                                                      @include('denominacion.edit')
+                                                                      @include('denominacion.delete')
                                                                   </tr>
                                                             @endforeach
                                                           </tbody>
                                                           
                                                       </table>
-                                                                  {{ $productos->links() }}     
+                                                                  {{ $denominacions->links() }}     
                   </div>
                                                   
                                             
@@ -144,7 +141,7 @@
 
 
         
-    @include('producto.create')
+    @include('denominacion.create')
     
 
 @endsection

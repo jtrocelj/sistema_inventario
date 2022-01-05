@@ -38,3 +38,6 @@ Route::resource('categoria',App\Http\Controllers\CategoriaController::class)->mi
 
 Route::get('producto', 'App\Http\Controllers\ProductoController@index')->name('productos.index');
 Route::resource('producto',App\Http\Controllers\ProductoController::class)->middleware('auth');
+
+Route::get('denominacion', 'App\Http\Controllers\DenominacionController@index')->name('denominacions.index');
+Route::resource('denominacion',App\Http\Controllers\DenominacionController::class)->middleware('auth');

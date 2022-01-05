@@ -40,11 +40,10 @@
            
             <div class="row">
               <div class="col">
-                <div class="card-header bg-transparent border-0">
-                  
-                
-              
-                  </div>
+              <div class=" bg-default">
+              <div class="card-header bg-transparent border-0">
+                <h3 class="text-white mb-0">Listado de Denominaciones</h3><br>
+              </div>
                   <div class="table-responsive mt--6">
                   
                                                 
@@ -62,7 +61,7 @@
                                                         <a href="#" data-toggle="modal" data-target="#ModalCreateMonedas" class="btn btn-sm btn-neutral" >
                                                         Agregar
                                                         </a>
-                                                       </div>
+                                                       </div><br>
                                                       <table class="table align-items-center table-dark table-flush">
                                                       <thead class="thead-dark">
                                                       <th scope="col" class="sort" data-sort="budget">Id</th>
@@ -112,17 +111,9 @@
                   </div>
                                                   
                                             
-                </div>   
-               
-                                        
-                                      
-                                  
-                              
-                              
-              </div> @include('layouts.footers.auth')
-              
-            </div>
-           
+                </div> @include('layouts.footers.auth')             
+              </div> 
+            </div> 
     </div>
 
   

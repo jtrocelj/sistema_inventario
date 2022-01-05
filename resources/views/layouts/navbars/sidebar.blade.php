@@ -78,7 +78,7 @@
 
                 <li class="nav-item">
                     <a class="nav-link" >
-                        <i class="ni ni-shop text-blue "></i> {{ __('Ventas') }}
+                        <i class="ni ni-shop text-blue "></i> {{ __('Vender') }}
                     </a>
                 </li>
                 <li class="nav-item ">

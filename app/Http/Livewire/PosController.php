@@ -91,8 +91,8 @@ class PosController extends Component
 
         Cart::add($producto->id, $producto->nombre, $producto->precio, $cantidad, $producto->image);
 
-        $this->total = Card::getTotal();
-        $this->itemsQuantity = Card::getTotalQuantity();
+        $this->total = Cart::getTotal();
+        $this->itemsQuantity = Cart::getTotalQuantity();
         $this->emit('scan-ok', $title);
 
     }
@@ -120,10 +120,39 @@ class PosController extends Component
         if($cantidad > 0){
             Cart::add($producto->id, $producto->nombre, $producto->precio, $cantidad, $producto->image);
 
-            $this->total = Card::getTotal();
-            $this->itemsQuantity = Card::getTotalQuantity();
+            $this->total = Cart::getTotal();
+            $this->itemsQuantity = Cart::getTotalQuantity();
             $this->emit('scan-ok', $title);
         }
+
+       
     }
+    public function removeItem($productoId){
+        Cart::remove($productoId);
+
+        $this->total = Cart::getTotal();
+        $this->itemsQuantity = Cart::getTotalQuantity();
+        $this->emit('scan-ok', 'Producto Eliminado');
+
+    }
+
+    public function decreaseQty($productoId){
+        $item = Cart::get($productoId);
+        Cart::remove($productoId);
+
+        $newQty = ($item->quantity) -1 ;
+
+        if($newQty > 0)
+            Cart::add($item->id, $item->nombre, $item->precio, $newQty, $item->attributes[0]);
+
+
+        $this->total = Cart::getTotal();
+        $this->itemsQuantity = Cart::getTotalQuantity();
+        $this->emit('scan-ok', 'Cantidad Actualizada');
+        
+
+    }
+
+
 
 }

@@ -13,7 +13,7 @@
                 
         <div class="connect-sorting">
         <div class="connect-sorting-content">
-            <div class="card simple-title-task ui-sortable-handle">
+            <div style="background: #386EB8; border:5px solid ;border-radius:10px;">
                 <div class="card-body">
 
                 @if($total > 0)
@@ -79,7 +79,7 @@
                     </table>
                 </div>
                 @else
-                <div style="border:5px solid ;border-radius:10px;">
+                <div style="background:white; border:5px solid white;border-radius:10px;">
                 <h3 class="text-center text-muted">Agregar productos a la venta</h3>
                 </div>
             

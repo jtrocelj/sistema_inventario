@@ -44,4 +44,6 @@ Route::get('denominacion', 'App\Http\Controllers\DenominacionController@index')-
 Route::resource('denominacion',App\Http\Controllers\DenominacionController::class)->middleware('auth');
 
 
-Route::get('pos',PosController::class);
+
+
+Route::get('pos',PosController::class)->middleware('auth');

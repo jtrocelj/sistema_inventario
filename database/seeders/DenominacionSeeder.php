@@ -16,7 +16,8 @@ class DenominacionSeeder extends Seeder
     {
         Denominacion::create( [ 
             'tipo'=> 'BILLETE',
-            'valor'=> 10
+            'valor'=> 10,
+            'image' => '10.jpg'
         ]);
         Denominacion::create( [ 
             'tipo'=> 'BILLETE',

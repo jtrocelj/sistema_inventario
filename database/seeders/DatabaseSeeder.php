@@ -20,6 +20,15 @@ class DatabaseSeeder extends Seeder
         $users->rol = 'admin';
         $users->telefono = '73053480';
         $users->status = 'ACTIVO';
+        $users->save();
+        
+        $users = new User;
+        $users->name = 'Jorge Trocel Justiniano';
+        $users->email = 'andrestrocel44@gmail.com';
+        $users->password = bcrypt('12345678');
+        $users->rol = 'empleado';
+        $users->telefono = '71123451';
+        $users->status = 'ACTIVO';
 
         $users->save();
         $this->call(DenominacionSeeder::class);

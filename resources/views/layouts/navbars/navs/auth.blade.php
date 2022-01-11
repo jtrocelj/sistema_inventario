@@ -1,5 +1,11 @@
+
+    
 <!-- Top navbar -->
 <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
+
+        <livewire:search-controller>
+    
+
     <div class="container-fluid">
         
         <!-- Form -->
@@ -8,6 +14,8 @@
                
             </div>
         </form>
+
+        
         <!-- User -->
         <ul class="navbar-nav align-items-center d-none d-md-flex">
             <li class="nav-item dropdown">

@@ -7,6 +7,7 @@ use App\Models\Denominacion;
 use Darryldecode\Cart\Facades\CartFacade as Cart;
 use Livewire\Component;
 use App\Models\Producto;
+use DB;
 
 class PosController extends Component
 {
@@ -42,6 +43,8 @@ class PosController extends Component
     ];
 
     public function ScanCode($barcode, $cantidad = 1){
+
+        dd($barcode);
 
         $producto = Producto::where('barcode', $barcode)->first();
         if($producto == null || empty($empty)){
@@ -154,5 +157,86 @@ class PosController extends Component
     }
 
 
+    public function clearCart(){
+        Cart::clear();
+        $this->efectivo = 0;
+        $this->cambio = 0;
+
+        $this->total = Cart::getTotal();
+        $this->itemsQuantity = Cart::getTotalQuantity();
+
+        $this->emit('scan-ok','Carrito Vacio');
+
+    }
+
+    public function saveSale()
+    {
+        if ($this->total <= 0)
+        {
+            $this->emit('sale-error','AGREGA PRODUCTOS A LA VENTA');
+            return;
+        }
+
+        if ($this->efectivo <= 0)
+        {
+            $this->emit('sale-error','INGRESA EL EFECTIVO');
+            return;
+        }
+        if ($this->total > $this->efectivo)
+        {
+            $this->emit('sale-error','EL EFECTIVO DEBE SER MAYOR O IGUAL AL TOTAL');
+            return;
+        }
+
+        DB::beginTransaction();
+
+            try {
+                $sale = Sale::create([
+                    'total' => $this->total,
+                    'items' => $this->itemsQuantity,
+                    'efectivo' => $this->efectivo,
+                    'cambio' => $this->cambio,
+                    'user_id' => auth()->user()->id,
+                ]);
+
+                if ($sale)
+                {
+                    $items = Cart::getContent();
+
+                    foreach ($items as $item)
+                    {
+                        SaleDetail::create([
+                            'precio' => $item->precio,
+                            'cantidad' => $item->cantidad,
+                            'producto_id' => $item->id,
+                            'sale_id' => $sale->id,
+                        ]);
+
+                        $producto = Producto::find($item->id);
+                        $producto->stock = $producto->stock - $item->cantidad;
+                        $producto->save();
+                    }
+                }
+
+            DB::commit();
+
+                Cart::clear();
+
+                $this->efectivo = 0;
+                $this->cambio= 0;
+                $this->total = Cart::getTotal();
+                $this->itemsQuantity = Cart::getTotalQuantity();
+                $this->emit('sale-ok', 'Venta registrada con éxito');
+                $this->emit('print-ticket', $sale->id);
+
+        } catch (Exception $e) {
+            DB::rollBack();
+                $this->emit('sale-error', $e->getMessage());
+        }
+    }
+
+    public function printTicket($sale) {
+        return Redirect::to("print://$sale->id");
+    }
 
 }

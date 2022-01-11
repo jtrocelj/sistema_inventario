@@ -196,7 +196,7 @@ class PosController extends Component
                     'items' => $this->itemsQuantity,
                     'efectivo' => $this->efectivo,
                     'cambio' => $this->cambio,
-                    'user_id' => auth()->user()->id,
+                    'usuario_id' => auth()->user()->id,
                 ]);
 
                 if ($sale)

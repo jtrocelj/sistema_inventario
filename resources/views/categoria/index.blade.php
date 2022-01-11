@@ -28,7 +28,7 @@
     <!-- Page content -->
     <div class="container-fluid mt--9 ">
      
-      @include('common.searchbox')
+     
       
     
 
@@ -39,7 +39,7 @@
               <div class="col">
               <div class="card bg-default shadow">
               <div class="card-header bg-transparent border-0">
-                <h3 class="text-white mb-0">Listado de Categorias</h3><br>
+                <h3 class="text-white mb-0">Listado de Categorias</h3> @include('common.searchbox')
               </div>
                   <div class="table-responsive mt--6">
                   

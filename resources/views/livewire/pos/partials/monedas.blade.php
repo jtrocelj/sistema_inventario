@@ -17,7 +17,7 @@
                     <div class="row">
                         @foreach($denominacions as $denominacion)
                             <div class="col-sm mt-2">
-                                <button wire:click.prevent="ACash({{$denominacion->valor}})" class="btn btn-dark btn-block den" style="width:88 px;">
+                                <button wire:click.prevent="ACash({{$denominacion->valor}})" class="btn btn-dark btn-block den" style="width:95px;">
                                     {{ $denominacion->valor > 0 ? 'Bs' . number_format($denominacion->valor,2, '.','') : 'Exacto' }}
                                 </button>
                             </div>

@@ -74,10 +74,15 @@
                         <i class="ni ni-tag text-blue"></i> {{ __('Productos') }}  
                     </a>
                 </li>
-              
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{{url('pos')}}">
+                    <a class="nav-link" href="{{route('clientes.index')}}">
+                        <i class="ni ni-single-02 text-blue "></i> {{ __('Clientes') }}
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('pos.index')}}">
                         <i class="ni ni-shop text-blue "></i> {{ __('Vender') }}
                     </a>
                 </li>

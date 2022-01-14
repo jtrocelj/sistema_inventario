@@ -193,6 +193,6 @@ class ProductoController extends Component
             unlink('storage/producto/' . $imageName);
         }
         return redirect()->route('producto.index')
-            ->with('success', 'Categoria eliminado exitosamente');
+            ->with('success', 'Producto eliminado exitosamente');
     }
 }

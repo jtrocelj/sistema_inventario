@@ -21,20 +21,12 @@
             <div class="row">
                 <div class="col-12">
                     <h1 style="margin-left: 20px;">Nueva venta <i class="fa fa-cart-plus"></i></h1>
-                
+                    @include("notificacion")
                     <div class="row">
                         <div class="col-12 col-md-6">
-                            <form action="#" method="post">
+                            <form action="{{route('terminarOCancelarVenta')}}" method="post">
                                 @csrf
-                                <div class="form-group">
-                                    <label for="id_cliente" style="margin-left: 20px;">Cliente</label>
-                                    <select class="form-control" name="id_cliente" style="width: 300px; margin-left: 20px;">
-                                        <option value="Elegir" disabled>ELEGIR:</option>
-                                        @foreach($clientes as $cliente)
-                                        <option value="{{$cliente->id}}" name="id_cliente">{{$cliente->apellidos}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
+                             
                                 @if(session("productos") !== null)
                                     <div class="form-group">
                                         <button name="accion" value="terminar" type="submit" class="btn btn-success">Terminar
@@ -48,7 +40,7 @@
                             </form>
                         </div>
                         <div class="col-12 col-md-6">
-                            <form action="#" method="post">
+                            <form action="{{route('agregarProductoVenta')}}" method="post">
                                 @csrf
                                 <div class="form-group">
                                     <label for="codigo" style="margin-left: -90px;" >Código de barras</label>
@@ -60,7 +52,7 @@
                         </div>
                     </div>
                     @if(session("productos") !== null)
-                        <h2>Total: ${{number_format($total, 2)}}</h2>
+                        <h2>Total: Bs. {{number_format($total, 2)}}</h2>
                         <div class="table-responsive">
                             <table class="table table-bordered">
                                 <thead>
@@ -75,9 +67,9 @@
                                 <tbody>
                                 @foreach(session("productos") as $producto)
                                     <tr>
-                                        <td>{{$producto->codigo_barras}}</td>
-                                        <td>{{$producto->descripcion}}</td>
-                                        <td>${{number_format($producto->precio_venta, 2)}}</td>
+                                        <td>{{$producto->barcode}}</td>
+                                        <td>{{$producto->nombre}}</td>
+                                        <td>${{number_format($producto->precio, 2)}}</td>
                                         <td>{{$producto->cantidad}}</td>
                                         <td>
                                             <form action="#" method="post">

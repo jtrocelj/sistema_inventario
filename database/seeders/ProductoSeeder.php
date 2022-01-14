@@ -21,7 +21,7 @@ class ProductoSeeder extends Seeder
             'stock'=> 250,
             'alerts'=> 10,
             'categoria_id'=> 1,
-            'image'=>'motoDeportiva.png'
+            'image'=> null
         ]);
 
         Producto::create( [ 
@@ -32,7 +32,7 @@ class ProductoSeeder extends Seeder
             'stock'=> 500,
             'alerts'=> 10,
             'categoria_id'=> 2,
-            'image'=>'motoEnduro.png'
+            'image'=>null
         ]);
         Producto::create( [ 
             'nombre'=> 'NAKED 1000',
@@ -42,7 +42,7 @@ class ProductoSeeder extends Seeder
             'stock'=> 400,
             'alerts'=> 10,
             'categoria_id'=> 3,
-            'image'=>'motoNaked.png'
+            'image'=>null
         ]);
         Producto::create( [ 
             'nombre'=> 'YAMAHA 250',
@@ -52,7 +52,7 @@ class ProductoSeeder extends Seeder
             'stock'=> 450,
             'alerts'=> 10,
             'categoria_id'=> 4,
-            'image'=>'motocros.png'
+            'image'=>null
         ]);
     }
 }

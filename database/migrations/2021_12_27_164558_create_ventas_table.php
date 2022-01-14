@@ -15,17 +15,6 @@ class CreateVentasTable extends Migration
     {
         Schema::create('ventas', function (Blueprint $table) {
             $table->id();
-            $table->decimal('total',10,2);
-            $table->integer('items');
-            $table->decimal('efectivo',10,2);
-            $table->enum('status',['PAGADO','PENDIENTE','CANCELADO'])->default('PAGADO');
-            $table->decimal('cambio',10,2);
-
-            $table->unsignedBigInteger('usuario_id');
-            $table->foreign('usuario_id')->references('id')->on('users');
-
-          
-
             $table->timestamps();
         });
     }

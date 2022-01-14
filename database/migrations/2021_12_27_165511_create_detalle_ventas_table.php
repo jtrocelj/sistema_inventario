@@ -24,7 +24,7 @@ class CreateDetalleVentasTable extends Migration
             $table->string("nombre");
             $table->string("barcode");
             $table->decimal("precio", 9, 2);
-            $table->decimal("cantidad", 9, 2);
+            $table->string("cantidad", 9);
             $table->timestamps();
         });
     }

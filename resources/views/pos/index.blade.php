@@ -1,17 +1,5 @@
 
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        @livewireStyles
-        
-    </head>
-    <body>
-       
-
+ 
             @section('content')
         
             @include('layouts.headers.cards')
@@ -69,7 +57,7 @@
                                     <tr>
                                         <td>{{$producto->barcode}}</td>
                                         <td>{{$producto->nombre}}</td>
-                                        <td>${{number_format($producto->precio, 2)}}</td>
+                                        <td>Bs{{number_format($producto->precio, 2)}}</td>
                                         <td>{{$producto->cantidad}}</td>
                                         <td>
                                             <form action="#" method="post">
@@ -103,10 +91,3 @@
             
                             
         @endsection
-
-        
-
-    @livewireScripts
-    </body>
-    </html>
-  

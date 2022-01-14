@@ -114,7 +114,7 @@ class PosController extends Component
         if (!$producto) {
             return redirect()
                 ->route("pos.index")
-                ->with("mensaje", "Producto no encontrado");
+                ->with("info", "Producto no encontrado");
         }
         $this->agregarProductoACarrito($producto);
         return redirect()
@@ -126,8 +126,7 @@ class PosController extends Component
         if ($producto->stock <= 0) {
             return redirect()->route("pos.index")
                 ->with([
-                    "mensaje" => "No hay existencias del producto",
-                    "tipo" => "danger"
+                    "danger" => "No hay existencias del producto",
                 ]);
         }
         $productos = $this->obtenerProductos();
@@ -140,8 +139,7 @@ class PosController extends Component
             if ($productos[$posibleIndice]->cantidad + 1 > $producto->stock) {
                 return redirect()->route("pos.index")
                     ->with([
-                        "mensaje" => "No se pueden agregar más productos de este tipo, se quedarían sin existencia",
-                        "tipo" => "danger"
+                        "danger" => "No se pueden agregar más productos de este tipo, se quedarían sin existencia",
                     ]);
             }
             $productos[$posibleIndice]->cantidad++;
@@ -153,7 +151,7 @@ class PosController extends Component
     private function buscarIndiceDeProducto(string $codigo, array &$productos)
     {
         foreach ($productos as $indice => $producto) {
-            if ($producto->codigo_barras === $codigo) {
+            if ($producto->barcode === $codigo) {
                 return $indice;
             }
         }

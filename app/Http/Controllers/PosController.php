@@ -14,7 +14,7 @@ use App\Models\DetalleVenta;
 
 class PosController extends Component
 {
-    public $total ,$itemsQuantity, $efectivo,$cambio,$id_cliente,$clientes;
+    public $total ,$itemsQuantity, $efectivo,$cambio,$id_cliente,$clientes,$productos=[];
 
     
     public function index()

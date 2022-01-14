@@ -14,7 +14,15 @@
                         <div class="col-12 col-md-6">
                             <form action="{{route('terminarOCancelarVenta')}}" method="post">
                                 @csrf
-                             
+                                <div class="form-group">
+                                    <label for="id_cliente" style="margin-left: 20px;">Cliente</label>
+                                    <select class="form-control" name="id_cliente" style="width: 300px; margin-left: 20px;">
+                                        <option value="Elegir" disabled>ELEGIR:</option>
+                                        @foreach($clientes as $cliente)
+                                        <option value="{{$cliente->id}}" name="id_cliente">{{$cliente->apellidos}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                                 @if(session("productos") !== null)
                                     <div class="form-group">
                                         <button name="accion" value="terminar" type="submit" class="btn btn-success">Terminar
@@ -75,11 +83,32 @@
                             </table>
                         </div>
                     @else
-                    <div style="background:white; border:5px solid white;border-radius:10px; width:400px; margin-left: 20px;">
-                        <h3 class="text-center text-muted">Agregar productos a la venta</h3>
-                        <h3>Escanea el código de barras o escribe y presiona Enter</h3>
+                    
+                    <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Código de barras</th>
+                                    <th>Descripción</th>
+                                    <th>Precio</th>
+                                    <th>Cantidad</th>
+                                    <th>Quitar</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            
+                                        </td>
+                                    </tr>
+                               
+                                </tbody>
+                            </table>
                         </div>
-                        
                     @endif
                 </div>
     </div>

@@ -54,9 +54,9 @@ Route::get('pos', 'App\Http\Controllers\PosController@index')->name('pos.index')
 Route::get('clientes', 'App\Http\Controllers\ClienteController@index')->name('clientes.index');
 Route::resource('clientes',App\Http\Controllers\ClienteController::class)->middleware('auth');
 
-Route::get("/ventas/ticket", "VentasController@ticket")->name("ventas.ticket");
-Route::resource("ventas", "VentasController");
-Route::get("/vender", "VenderController@index")->name("vender.index");
+Route::get("/pos/ticket", "VentasController@ticket")->name("ventas.ticket");
+
+
 
 Route::post("/productoDeVenta", "App\Http\Controllers\PosController@agregarProductoVenta")->name("agregarProductoVenta");
 Route::delete("/productoDeVenta", "App\Http\Controllers\PosController@quitarProductoDeVenta")->name("quitarProductoDeVenta");

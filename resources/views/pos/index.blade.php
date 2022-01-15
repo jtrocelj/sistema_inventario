@@ -68,15 +68,15 @@
                                         <td>Bs{{number_format($producto->precio, 2)}}</td>
                                         <td>{{$producto->cantidad}}</td>
                                         <td>
-                                            <form action="#" method="post">
-                                                @method("delete")
-                                                @csrf
-                                                <input type="hidden" name="indice" value="{{$loop->index}}">
-                                                <button type="submit" class="btn btn-danger">
-                                                    <i class="fa fa-trash"></i>
-                                                </button>
-                                            </form>
-                                        </td>
+                                    <form action="{{route('quitarProductoDeVenta')}}" method="post">
+                                        @method("delete")
+                                        @csrf
+                                        <input type="hidden" name="indice" value="{{$loop->index}}">
+                                        <button type="submit" class="btn btn-danger">
+                                            <i class="fa fa-trash"></i>
+                                        </button>
+                                    </form>
+                                </td>
                                     </tr>
                                 @endforeach
                                 </tbody>

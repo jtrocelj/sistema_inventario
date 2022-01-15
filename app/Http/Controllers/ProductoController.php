@@ -50,7 +50,7 @@ class ProductoController extends Component
         if ($request){
             $query = trim($request->get('search'));
             /*$data = Categoria::orderBy('id', 'asc')->paginate($this->pagination);*/
-            $data = Producto::where('nombre', 'LIKE', '%' . $query . '%')
+            $data = Producto::where('nombre',  'LIKE', '%' . $query . '%')
             ->orderBY('id','asc')->paginate($this->pagination)
             ;
 

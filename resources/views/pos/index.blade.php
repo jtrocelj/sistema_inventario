@@ -77,41 +77,7 @@
                                 </div>
                         </div>       
                                                                                                                     
-                </div>                                                                        
-                           
-                <div class="col-sm-12 col-md-4">
-                            <div class="row" >
-                                    <div class="col-sm-11" style="background:#1C345D; border:5px solid ;border-radius:10px;margin-left: 200%; margin-top:-356px;">
-                                            <div><br>
-                                                <div class="card div_radius">
-                                                    <div class="card-header">
-                                                    <h3 class="card-title">Datos para la factura</h3>
-                                                        <div class="connect-sorting-content" >
-                                                            
-                                                                        <form action="{{route('terminarOCancelarVenta')}}" method="post">
-                                                                            @csrf
-                                                                            <div class="form-group">
-                                                                                <label for="id_cliente" style="margin-left: -5px;">Cliente</label>
-                                                                                <select class="form-control" name="id_cliente" style="width: 200px; margin-left: -5px;">
-                                                                                    <option value="Elegir" disabled>ELEGIR:</option>
-                                                                                    @foreach($clientes as $cliente)
-                                                                                    <option value="{{$cliente->id}}" name="id_cliente">{{$cliente->apellidos}}</option>
-                                                                                    @endforeach
-                                                                                </select>
-                                                                            </div>
-                                                                        </form>    
-                                                                            
-                                                        </div>      
-                                                    </div>
-                                                </div>    
-                                            </div>
-
-
-
-                                               
-                                    </div> 
-                            </div> 
-                     </div>         
+                </div>                                                                                
                         
 					<script>
                         function cambio(){
@@ -141,16 +107,16 @@
                     </script>         
                     <div class="col-sm-12 col-md-4">
                                                 <div class="row" >
-                                                        <div class="col-sm-11" style="background:#1C345D; border:5px solid ;border-radius:10px;margin-left: 200%; margin-top:40px;"><br>
+                                                        <div class="col-sm-11" style="background:#1C345D; border:5px solid ;border-radius:10px;margin-left: 200%; margin-top:-360px;"><br>
                                                                 <form method="post" name="restar">
-                                                                    <div class="card div_radius">  
+                                                                    <div class="card div_radius" >  
                                                                         <div class="card-header">
                                                                         <h2 class="card-title">Realizar venta</h2>
 
                                                                             <div class="mb-3">
                                                                                 <div class="form-group">
                                                                                 <label for="">Total: </label>
-                                                                                <input type="text" name="total" value=" {{number_format($total)}} " onKeyUp="cambio();format(this)" onchange="format(this)" class="form-control text-center input_style_total" id="venttotal_venta" placeholder="00.00" readonly>
+                                                                                <input type="text" name="total" value="{{number_format($total)}} " onKeyUp="cambio();format(this)" onchange="format(this)" class="form-control text-center input_style_total" id="venttotal_venta" placeholder="00.00" readonly>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="mb-3">
@@ -174,13 +140,32 @@
                                                                 </form><br>
                                                                 <form action="{{route('terminarOCancelarVenta')}}" method="post">
                                                                     @csrf
-                                                                    @if(session("productos") !== null)
-                                                                                                    
-                                                                        <button name="accion" style="width: 100px;" value="terminar" type="submit" class="btn btn-success">Terminar</button>
-                                                                                                        
-                                                                        <button name="accion" style="width: 100px;" value="cancelar" type="submit" class="btn btn-danger">Cancelar</button>
-                                                                                                        
-                                                                        @endif
+                                                                    <div class="card div_radius">  
+                                                                        <div class="card-header">
+                                                                            <h3 class="card-title">Datos para la factura</h3>
+                                                                            <div class="col-lg-40  text-right  ">
+                                                                                <a href="#" data-toggle="modal" data-target="#ModalCreateCliente" class="btn btn-sm btn-neutral" >
+                                                                                Agregar Cliente
+                                                                                </a>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                        <label for="id_cliente">Cliente</label>
+                                                                                        <select required class="form-control" name="id_cliente" id="id_cliente">
+                                                                                            @foreach($clientes as $cliente)
+                                                                                                <option value="{{$cliente->id}}">{{$cliente->apellidos}}</option>
+                                                                                            @endforeach
+                                                                                        </select>
+                                                                                    </div>
+                                                                        </div>      
+                                                                    </div>  <br>                
+                                                                            @if(session("productos") !== null)
+                                                                                                            
+                                                                                <button name="accion" style="width: 100px;" value="terminar" type="submit" class="btn btn-success">Terminar</button>
+                                                                                                                
+                                                                                <button name="accion" style="width: 100px;" value="cancelar" type="submit" class="btn btn-danger">Cancelar</button>
+                                                                                                                
+                                                                                @endif
+                                                                          
                                                                 </form><br> 
                                                         </div>  
                                                 </div>  
@@ -228,6 +213,7 @@
 
         
      
-            
+                  
+    @include('clientes.create')
                             
         @endsection

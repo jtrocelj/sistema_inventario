@@ -15,7 +15,10 @@ class CreateVentasTable extends Migration
     {
         Schema::create('ventas', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('id_cliente');
+        
             $table->timestamps();
+            $table->foreign('id_cliente')->references('id')->on('clientes')->onDelete('cascade');
         });
     }
 

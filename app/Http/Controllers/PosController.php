@@ -19,17 +19,16 @@ class PosController extends Component
     
     public function index(Request $request)
     {
-        $efectivo= $request->input('efectivo');
+        
         $total = 0;
-        $efectivo2 = 0;
       
         foreach ($this->obtenerProductos() as $producto) {
             $total += $producto->cantidad * $producto->precio;
-            $efectivo2 +=  $efectivo - $total;
+            
         }
        
     
-        return view('pos.index',['total' => $total,'efectivo2'=> $efectivo2,'clientes' => Cliente::orderBy('id','asc')->get()])
+        return view('pos.index',['total' => $total,'clientes' => Cliente::orderBy('id','desc')->get()])
         ->extends('layouts.main')
         ->section('content');
     }
@@ -46,7 +45,7 @@ class PosController extends Component
     {
         // Crear una venta
         $venta = new Venta();
-       
+        $venta->id_cliente = $request->input("id_cliente");
         $venta->saveOrFail();
         $idVenta = $venta->id;
         $productos = $this->obtenerProductos();

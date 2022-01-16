@@ -36,7 +36,7 @@ class ClienteController extends Controller
             $query = trim($request->get('search'));
             /*$data = Categoria::orderBy('id', 'asc')->paginate($this->pagination);*/
             $data = Cliente::where('apellidos', 'LIKE', '%' . $query . '%')
-            ->orderBY('id','asc')->paginate($this->pagination)
+            ->orderBY('id','desc')->paginate($this->pagination)
             ;
 
             return view('clientes.index',['clientes' => $data, 'search' => $query])

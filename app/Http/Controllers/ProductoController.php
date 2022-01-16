@@ -21,7 +21,7 @@ class ProductoController extends Component
     
 
     public $nombre, $search = '',$barcode,$costo,$precio,$stock,$alerts,$categoria_id,$image,$selected_id;
-    private $pagination =5;
+    private $pagination =4;
 
    
     public function paginationView(){

@@ -14,18 +14,22 @@ use App\Models\DetalleVenta;
 
 class PosController extends Component
 {
-    public $total ,$itemsQuantity, $efectivo,$cambio,$id_cliente,$clientes;
+    public $total ,$efectivo, $efectivo2,$itemsQuantity, $cambio,$id_cliente,$clientes;
 
     
-    public function index()
+    public function index(Request $request)
     {
+        $efectivo= $request->input('efectivo');
         $total = 0;
+        $efectivo2 = 0;
+      
         foreach ($this->obtenerProductos() as $producto) {
             $total += $producto->cantidad * $producto->precio;
+            $efectivo2 +=  $efectivo - $total;
         }
        
     
-        return view('pos.index',['total' => $total,'clientes' => Cliente::orderBy('id','asc')->get()])
+        return view('pos.index',['total' => $total,'efectivo2'=> $efectivo2,'clientes' => Cliente::orderBy('id','asc')->get()])
         ->extends('layouts.main')
         ->section('content');
     }

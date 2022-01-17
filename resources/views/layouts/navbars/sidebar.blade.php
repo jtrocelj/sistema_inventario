@@ -86,6 +86,11 @@
                         <i class="ni ni-shop text-blue "></i> {{ __('Vender') }}
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('ventas.index')}}">
+                        <i class="ni ni-cart text-blue "></i> {{ __('Ventas') }}
+                    </a>
+                </li>
                 <li class="nav-item ">
                     <a class="nav-link" href="#">
                         <i class="ni ni-key-25 text-blue"></i> {{ __('Rol') }}
@@ -113,7 +118,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">
-                        <i class="ni ni-cart text-blue"></i> {{ __('Arqueos') }}
+                        <i class="ni ni-book-bookmark text-blue"></i> {{ __('Arqueos') }}
                     </a>
                 </li>
                 <li class="nav-item">

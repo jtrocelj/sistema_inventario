@@ -7,7 +7,7 @@
         <style>
             .table-fixed tbody {
                 display: block;
-                height: 300px;
+                height: 400px;
                 overflow-y: auto;
             }
 
@@ -34,6 +34,15 @@
                             </form>
                         </div>
                     </div>
+                    @if ($message = Session::get('success'))
+                                              <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                                      <span class="alert-inner--icon"><i class="ni ni-like-2"></i></span>
+                                                      <span class="alert-inner--text"> <p>{{ $message }}</p>
+                                                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                          <span aria-hidden="true">&times;</span>
+                                                      </button>
+                                                    </div>
+                                              @endif
                     @if(session("productos") !== null)
                         
                      <div class="col-sm-12 col-md-8"> 
@@ -107,7 +116,7 @@
                     </script>         
                     <div class="col-sm-12 col-md-4">
                                                 <div class="row" >
-                                                        <div class="col-sm-11" style="background:#1C345D; border:5px solid ;border-radius:10px;margin-left: 200%; margin-top:-360px;"><br>
+                                                        <div class="col-sm-11" style="background:#1C345D; border:5px solid ;border-radius:10px;margin-left: 200%; margin-top:-460px;"><br>
                                                                 <form method="post" name="restar">
                                                                     <div class="card div_radius" >  
                                                                         <div class="card-header">
@@ -116,7 +125,7 @@
                                                                             <div class="mb-3">
                                                                                 <div class="form-group">
                                                                                 <label for="">Total: </label>
-                                                                                <input type="text" name="total" value="{{number_format($total)}} " onKeyUp="cambio();format(this)" onchange="format(this)" class="form-control text-center input_style_total" id="venttotal_venta" placeholder="00.00" readonly>
+                                                                                <input type="text" name="total" value="{{$total}} " onKeyUp="cambio();format(this)" onchange="format(this)" class="form-control text-center input_style_total" id="venttotal_venta" placeholder="00.00" readonly>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="mb-3">
@@ -128,10 +137,10 @@
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col">
-                                                                                    <di class="form-group">
+                                                                                    <div class="form-group">
                                                                                     <label for="">Cambio: </label>
                                                                                     <input type="text" id="resultado" name="resultado"  class="form-control input_style" readonly placeholder="Bs 0.00"> 
-                                                                                    </di>
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
                                                                             </div>
@@ -144,7 +153,7 @@
                                                                         <div class="card-header">
                                                                             <h3 class="card-title">Datos para la factura</h3>
                                                                             <div class="col-lg-40  text-right  ">
-                                                                                <a href="#" data-toggle="modal" data-target="#ModalCreateCliente" class="btn btn-sm btn-neutral" >
+                                                                                <a href="#" data-toggle="modal" data-target="#ModalCreateCliente2" class="btn btn-sm btn-neutral" >
                                                                                 Agregar Cliente
                                                                                 </a>
                                                                             </div>
@@ -214,6 +223,6 @@
         
      
                   
-    @include('clientes.create')
+    @include('pos.create')
                             
         @endsection

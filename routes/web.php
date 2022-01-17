@@ -49,12 +49,11 @@ Route::resource('denominacion',App\Http\Controllers\DenominacionController::clas
 
 
 Route::get('pos', 'App\Http\Controllers\PosController@index')->name('pos.index')->middleware('auth');
-
+Route::resource('pos',App\Http\Controllers\PosController::class)->middleware('auth');
 
 Route::get('clientes', 'App\Http\Controllers\ClienteController@index')->middleware('auth')->name('clientes.index');
 Route::resource('clientes',App\Http\Controllers\ClienteController::class)->middleware('auth');
 
-Route::get("/pos/ticket", "VentasController@ticket")->name("ventas.ticket");
 
 
 

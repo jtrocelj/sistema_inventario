@@ -33,6 +33,22 @@ class PosController extends Component
         ->section('content');
     }
 
+    
+    public function store(Request $request)
+    {
+        
+
+       
+        $cliente = new Cliente();
+        $cliente->apellidos = $request->apellidos;
+        $cliente->ci = $request->ci;
+
+       
+        $cliente->save();
+    
+        return redirect()->route('pos.index')
+            ->with('success', 'Cliente creado exitosamente.');
+    }
     public function terminarOCancelarVenta(Request $request)
     {
         if ($request->input("accion") == "terminar") {

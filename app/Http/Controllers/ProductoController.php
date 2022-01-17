@@ -47,17 +47,15 @@ class ProductoController extends Component
     public function index(Request $request)
     {
         
-        if ($request){
-            $query = trim($request->get('search'));
+       
             /*$data = Categoria::orderBy('id', 'asc')->paginate($this->pagination);*/
-            $data = Producto::where('nombre',  'LIKE', '%' . $query . '%')
-            ->orderBY('id','asc')->paginate($this->pagination)
+            $data = Producto::orderBY('id','asc')->paginate($this->pagination)
             ;
 
-            return view('producto.index',['productos' => $data, 'search' => $query, 'categorias' => Categoria::orderBy('nombre','asc')->get()])
+            return view('producto.index',['productos' => $data, 'categorias' => Categoria::orderBy('nombre','asc')->get()])
             ->extends('layouts.main')
             ->section('content');
-        }
+        
       
     }
 

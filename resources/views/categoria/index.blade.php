@@ -3,7 +3,7 @@
     @include('layouts.headers.cards')
     
     @extends('layouts.main')
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
 
@@ -67,7 +67,7 @@
                                                       <th scope="col" class="sort text-center" data-sort="name">Acción</th>
                                                       
                                                           </thead>
-                                                          <tbody class="list">
+                                                          <tbody  id="laTabla">
                                                             @foreach($categorias as $categoria)
                                                             <td>{{$categoria->id}}</td>
                                                               <td class="text-center">{{$categoria->nombre}}</td>
@@ -102,7 +102,7 @@
                                                           </tbody>
                                                           
                                                       </table>
-                                                                  {{ $categorias->links() }}     
+                                                                 
                   </div>
                                                   
                                             
@@ -136,24 +136,20 @@
 
         
     @include('categoria.create')
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+      $(document).ready(function(){
+        $("#buscador").on("keyup", function() {
+          var value = $(this).val().toLowerCase();
+          $("#laTabla tr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+          });
+        });
+      });
+      </script>
 
 @endsection
 
 
-    <script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.min.js"></script>
-    <script src="{{ asset('argon') }}/vendor/chart.js/dist/Chart.extension.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function(){
-          window.livewire.on('show-modal', msg =>{
-            $('#theModal').modal('show')
-          });
-
-
-        });
-
-      
-        
-
-    </script>
+    
   

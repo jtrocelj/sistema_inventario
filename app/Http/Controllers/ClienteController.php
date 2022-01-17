@@ -32,17 +32,14 @@ class ClienteController extends Controller
     }
     public function index(Request $request)
     {
-        if ($request){
-            $query = trim($request->get('search'));
+       
             /*$data = Categoria::orderBy('id', 'asc')->paginate($this->pagination);*/
-            $data = Cliente::where('apellidos', 'LIKE', '%' . $query . '%')
-            ->orderBY('id','desc')->paginate($this->pagination)
-            ;
+            $data = Cliente::orderBy('id','desc')->paginate($this->pagination);
 
-            return view('clientes.index',['clientes' => $data, 'search' => $query])
+            return view('clientes.index',['clientes' => $data])
             ->extends('layouts.main')
             ->section('content');
-        }
+        
       
     }
 

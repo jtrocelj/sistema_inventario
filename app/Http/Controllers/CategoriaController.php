@@ -44,17 +44,14 @@ class CategoriaController extends Component
      */
     public function index(Request $request)
     {
-        if ($request){
-            $query = trim($request->get('search'));
-            /*$data = Categoria::orderBy('id', 'asc')->paginate($this->pagination);*/
-            $data = Categoria::where('nombre', 'LIKE', '%' . $query . '%')
-            ->orderBY('id','asc')->paginate($this->pagination)
-            ;
+        
+            $data = Categoria::orderBy('id', 'asc')->paginate($this->pagination);
+         
 
-            return view('categoria.index',['categorias' => $data, 'search' => $query])
+            return view('categoria.index',['categorias' => $data])
             ->extends('layouts.main')
             ->section('content');
-        }
+    
       
     }
    

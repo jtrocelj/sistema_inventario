@@ -39,7 +39,8 @@
               <div class="col">
               <div class="card bg-default shadow">
               <div class="card-header bg-transparent border-0">
-                <h3 class="text-white mb-0">Listado de Categorias</h3> @include('common.searchbox')
+                <h3 class="text-white mb-0">Listado de Roles</h3> @include('common.searchbox')
+                @include("notificacion")
               </div>
                   <div class="table-responsive mt--6">
                   
@@ -53,9 +54,8 @@
                                                       </button>
                                                     </div>
                                               @endif
-
                                               <div class="col-lg-40  text-right  ">
-                                                        <a href="#" data-toggle="modal" data-target="#ModalCreate" class="btn btn-sm btn-neutral" >
+                                                        <a href="#" data-toggle="modal" data-target="#ModalCreateRol" class="btn btn-sm btn-neutral" >
                                                         Agregar
                                                         </a>
                                                        </div><br>
@@ -63,46 +63,38 @@
                                                       <thead class="thead-dark">
                                                       <th scope="col" class="sort text-center" data-sort="budget">Id</th>
                                                       <th scope="col" class="sort text-center" data-sort="budget">Descripción</th>
-                                                      <th scope="col"  class="sort text-center" data-sort="name">Imagen</th>
                                                       <th scope="col" class="sort text-center" data-sort="name">Acción</th>
                                                       
                                                           </thead>
                                                           <tbody  id="laTabla">
-                                                            @foreach($categorias as $categoria)
-                                                            <td>{{$categoria->id}}</td>
-                                                              <td class="text-center">{{$categoria->nombre}}</td>
-                                                              <td class="text-center"> 
-                                                                <span>
-                                                                <img src="{{asset('storage/categoria/' .$categoria->imagen)}}" class="navbar-brand-img  rounded-circle" height="60" width="60px" >
-                                                                </span>   
-                                                                
-                                                              </td>
-
-
+                                                            @foreach($roles as $role)
+                                                            <td>{{$role->id}}</td>
+                                                              <td class="text-center">{{$role->name}}</td>
+                                                        
                                                                       <td class="text-center">
                                                                         
                                                                           
-                                                                              <a class="btn btn-sm btn-success" href="#" data-toggle="modal" data-target="#ModalEdit{{$categoria->id}}">
+                                                                              <a class="btn btn-sm btn-success" href="#" data-toggle="modal" data-target="#ModalEditRol{{$role->id}}">
                                                                               <i class="fa fa-fw fa-edit"></i>
                                                                               </a>
                                                                              
                                                                               @csrf
                                                                                @method('DELETE')
                                                                               <button type="submit" class="btn btn-danger btn-sm" 
-                                                                              data-toggle="modal" data-target="#ModalDelete{{$categoria->id}}" 
+                                                                              data-toggle="modal" data-target="#ModalDeleteRol{{$role->id}}" 
                                                                             ><a></a><i class="fa fa-fw fa-trash"></i></button>
                                                                         
                                                                            
                                                         
                                                                       </td>
-                                                                      @include('categoria.edit')
-                                                                      @include('categoria.delete')
+                                                                      @include('roles.edit')
+                                                                      @include('roles.delete')
                                                                   </tr>
                                                             @endforeach
                                                           </tbody>
                                                           
                                                       </table>
-                                                      {{ $categorias->links() }}        
+                                                                 
                   </div>
                                                   
                                             
@@ -135,7 +127,7 @@
 
 
         
-    @include('categoria.create')
+  @include('roles.create')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
       $(document).ready(function(){

@@ -63,3 +63,8 @@ Route::post("/terminarOCancelarVenta", "App\Http\Controllers\PosController@termi
 
 Route::resource('ventas', 'App\Http\Controllers\VentasController')->middleware('auth');
 Route::get("/ventas/ticket", "App\Http\Controllers\VentasController@ticket")->name("ventas.ticket");
+
+
+
+Route::get('roles', 'App\Http\Controllers\RolesController@index')->name('roles.index')->middleware('auth');
+Route::resource('roles', 'App\Http\Controllers\RolesController')->middleware('auth');

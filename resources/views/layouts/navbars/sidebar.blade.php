@@ -92,7 +92,7 @@
                     </a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{route('roles.index')}}">
                         <i class="ni ni-key-25 text-blue"></i> {{ __('Rol') }}
                     </a>
                 </li>

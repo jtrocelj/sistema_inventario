@@ -26,7 +26,7 @@ class RolesController extends Controller
             if(strlen($this->search) > 0)
                 $roles = Role::where('name' , 'like', '%'.$this->search . '%')->paginate($this->pagination);
             else
-                $roles = Role::orderBy('name', 'asc')->paginate($this->pagination);
+                $roles = Role::orderBy('id', 'asc')->paginate($this->pagination);
 
             return view('roles.index', ['roles' => $roles])
             ->extends('layouts.main')
@@ -77,4 +77,15 @@ class RolesController extends Controller
         ->with('success', 'Rol eliminado exitosamente.');
     }
 
+    public function AsignarRoles($rolesList){
+        if($this->userSelected > 0){
+            $user = User::find($this->userSelected);
+            if($user){
+                $user->syncRoles($rolesList);
+                return ([
+                    "success" => "Roles asignados correctamente",
+                ]);
+            }
+        }
+    }
 }

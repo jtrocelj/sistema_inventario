@@ -39,7 +39,7 @@
               <div class="col">
               <div class="card bg-default shadow">
               <div class="card-header bg-transparent border-0">
-                <h3 class="text-white mb-0">Listado de Roles</h3> @include('common.searchbox')
+                <h3 class="text-white mb-0">Listado de Permisos</h3> @include('common.searchbox')
                 @include("notificacion")
               </div>
                   <div class="table-responsive mt--6">
@@ -55,7 +55,7 @@
                                                     </div>
                                               @endif
                                               <div class="col-lg-40  text-right  ">
-                                                        <a href="#" data-toggle="modal" data-target="#ModalCreateRol" class="btn btn-sm btn-neutral" >
+                                                        <a href="#" data-toggle="modal" data-target="#ModalCreatePermisos" class="btn btn-sm btn-neutral" >
                                                         Agregar
                                                         </a>
                                                        </div><br>
@@ -67,33 +67,34 @@
                                                       
                                                           </thead>
                                                           <tbody  id="laTabla">
-                                                            @foreach($roles as $role)
-                                                            <td class="text-center">{{$role->id}}</td>
-                                                              <td class="text-center">{{$role->name}}</td>
+                                                            @foreach($permisos as $permiso)
+                                                            <td class="text-center">{{$permiso->id}}</td>
+                                                              <td class="text-center">{{$permiso->name}}</td>
                                                         
                                                                       <td class="text-center">
                                                                         
                                                                           
-                                                                              <a class="btn btn-sm btn-success" href="#" data-toggle="modal" data-target="#ModalEditRol{{$role->id}}">
+                                                                              <a class="btn btn-sm btn-success" href="#" data-toggle="modal" data-target="#ModalEditPermisos{{$permiso->id}}">
                                                                               <i class="fa fa-fw fa-edit"></i>
                                                                               </a>
                                                                              
                                                                               @csrf
                                                                                @method('DELETE')
                                                                               <button type="submit" class="btn btn-danger btn-sm" 
-                                                                              data-toggle="modal" data-target="#ModalDeleteRol{{$role->id}}" 
+                                                                              data-toggle="modal" data-target="#ModalDeletePermisos{{$permiso->id}}" 
                                                                             ><a></a><i class="fa fa-fw fa-trash"></i></button>
                                                                         
                                                                            
                                                         
                                                                       </td>
-                                                                      @include('roles.edit')
-                                                                      @include('roles.delete')
+                                                                      @include('permisos.edit')
+                                                                      @include('permisos.delete')
                                                                   </tr>
                                                             @endforeach
                                                           </tbody>
                                                           
                                                       </table>
+                                                      {{ $permisos->links() }}     
                                                                  
                   </div>
                                                   
@@ -127,7 +128,7 @@
 
 
         
-  @include('roles.create')
+  @include('permisos.create')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>
       $(document).ready(function(){

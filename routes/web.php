@@ -66,7 +66,7 @@ Route::get("/ventas/ticket", "App\Http\Controllers\VentasController@ticket")->na
 
 
 
-Route::get('roles', 'App\Http\Controllers\RolesController@index')->name('roles.index')->middleware('auth');
+
 Route::resource('roles', 'App\Http\Controllers\RolesController')->middleware('auth');
 
 Route::get('permisos', 'App\Http\Controllers\PermisosController@index')->name('permisos.index')->middleware('auth');

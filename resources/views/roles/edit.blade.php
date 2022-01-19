@@ -20,6 +20,39 @@
                             <input type="text" name="name" value ="{{$role->name}}" class="form-control" placeholder="Ingrese el nombre del rol" required>
                             </div>
                         </div>
+                        <div class="row">
+                        <label for="name" class="col-sm-2 col-form-label"><strong>Permisos</strong></label>
+                        <div class="col-sm-7">
+                        <div class="form-group">
+                            <div class="tab-content">
+                            <div class="tab-pane active" id="profile">
+                                <table class="table">
+                                <tbody>
+                                    @foreach ($permissions as $id => $permiso)
+                                    <tr>
+                                    <td>
+                                        <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input class="form-check-input" type="checkbox" name="permissions[]"
+                                            value="{{ $id }}" {{ $role->permissions->contains($id) ? 'checked' : '' }}>
+                                            <span class="form-check-sign">
+                                            <span class="check" value=""></span>
+                                            </span>
+                                        </label>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        {{ $permiso }}
+                                    </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                                </table>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
                     </div>   
                     
                  

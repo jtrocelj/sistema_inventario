@@ -56,15 +56,21 @@ class RolesController extends Controller
     }
 
     public function edit($id){
+        
         $role = Role::find($id);
-       
-
-        return view('roles.edit', compact('role'));
+        $permissions = Permission::all()->pluck('name', 'id');
+        $role->load('permissions');
+        // dd($role);
+        return view('roles.edit', compact('role', 'permissions'));
+      
     }
 
     public function update(Request $request, $id){
         $role = Role::find($id);
         $role->name= $request->name;
+          // $role->permissions()->sync($request->input('permissions', []));
+          $role->syncPermissions($request->input('permissions', []));
+
         $role->update();
 
         return redirect()->route('roles.index')
@@ -73,28 +79,12 @@ class RolesController extends Controller
 
 
     public function destroy($id){
-        $permissionsCount = Role::find($id)->permissions->count();
-        if($permissionsCount > 0){
-            return redirect()->route("roles.index")
-                ->with([
-                    "danger" => "No se puede eliminar el rol porque tiene permisos asociados",
-                ]);
-        }
+      
 
         Role::find($id)->delete();
         return redirect()->route('roles.index')
         ->with('success', 'Rol eliminado exitosamente.');
     }
 
-    public function AsignarRoles($rolesList){
-        if($this->userSelected > 0){
-            $user = User::find($this->userSelected);
-            if($user){
-                $user->syncRoles($rolesList);
-                return ([
-                    "success" => "Roles asignados correctamente",
-                ]);
-            }
-        }
-    }
+    
 }

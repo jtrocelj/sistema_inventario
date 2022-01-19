@@ -2,7 +2,7 @@
 @section('content')
     @include('layouts.headers.cards')
     
-    @extends('layouts.main')
+    @extends('layouts.main', ['activePage' => 'roles', 'titlePage' => 'Roles'])
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
@@ -68,7 +68,7 @@
                                                       
                                                           </thead>
                                                           <tbody  id="laTabla">
-                                                            @foreach($roles as $role)
+                                                          @foreach ($roles as $role)
                                                             <td class="text-center">{{$role->id}}</td>
                                                               <td class="text-center">{{$role->name}}</td>
                                                               <td class="text-center">
@@ -83,30 +83,31 @@
                                                                           
                                                                               <a class="btn btn-sm btn-success" href="#" data-toggle="modal" data-target="#ModalEditRol{{$role->id}}">
                                                                               <i class="fa fa-fw fa-edit"></i>
-                                                                              </a>
+                                                                              </a> 
                                                                              
                                                                               @csrf
                                                                                @method('DELETE')
                                                                               <button type="submit" class="btn btn-danger btn-sm" 
                                                                               data-toggle="modal" data-target="#ModalDeleteRol{{$role->id}}" 
                                                                             ><a></a><i class="fa fa-fw fa-trash"></i></button>
-                                                                        
-                                                                           
+                                                                            <h3>  @include('roles.edit')<h3>
+                                                                            
                                                         
                                                                       </td>
-                                                                      @include('roles.edit')
+                                                                     
                                                                       @include('roles.delete')
+                                                                      
                                                                   </tr>
-                                                            @endforeach
+                                                                  @endforeach
                                                           </tbody>
                                                           
                                                       </table>
-                                                                 
+                                                     
                   </div>
                                                   
                                             
                 </div>    @include('layouts.footers.auth')
-               
+              
                                         
                                       
                                   
@@ -133,7 +134,7 @@
 
 
 
-        
+ 
   @include('roles.create')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script>

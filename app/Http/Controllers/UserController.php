@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-
+use Spatie\Permission\Models\Role;
 /**
  * Class UserController
  * @package App\Http\Controllers
@@ -17,9 +17,15 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    private $pagination =8;
+
+   
+    public function paginationView(){
+        return 'vendor.livewire.bootstrap';
+    }
     public function index()
     {
-        $users = User::paginate();
+        $users = User::orderBy('id', 'asc')->paginate($this->pagination);;
 
         return view('user.index', compact('users'))
             ->with('i', (request()->input('page', 1) - 1) * $users->perPage());
@@ -33,16 +39,20 @@ class UserController extends Controller
     public function create()
     {
         
-        return view('admin.create');
+        $roles = Role::all()->pluck('name', 'id');
+        return view('admin.create', compact('roles'));
     }
 
    
     public function store(Request $request){
-        User::create($request->only('name','email','telefono','rol')
+        $user = User::create($request->only('name','email','telefono','rol')
         +[
             'password'=>bcrypt($request->input('password')),
         ]);
-        
+    
+        $roles = $request->input('rol', []);
+        $user->syncRoles($roles);
+
         return redirect()->route('users.index')
         ->with('success', 'Usuario registrado exitosamente');
     }

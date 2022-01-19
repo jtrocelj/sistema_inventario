@@ -42,8 +42,6 @@ Route::resource('categoria',App\Http\Controllers\CategoriaController::class)->mi
 Route::get('producto', 'App\Http\Controllers\ProductoController@index')->middleware('auth')->name('productos.index');
 Route::resource('producto',App\Http\Controllers\ProductoController::class)->middleware('auth');
 
-Route::get('denominacion', 'App\Http\Controllers\DenominacionController@index')->middleware('auth')->name('denominacions.index');
-Route::resource('denominacion',App\Http\Controllers\DenominacionController::class)->middleware('auth');
 
 
 
@@ -67,8 +65,8 @@ Route::get("/ventas/ticket", "App\Http\Controllers\VentasController@ticket")->na
 
 
 
-Route::resource('roles', 'App\Http\Controllers\RolesController')->middleware('auth');
+Route::resource('roles', 'App\Http\Controllers\RolesController')->middleware('auth.admin');
 
-Route::get('permisos', 'App\Http\Controllers\PermisosController@index')->name('permisos.index')->middleware('auth');
-Route::resource('permisos', 'App\Http\Controllers\PermisosController')->middleware('auth');
+Route::get('permisos', 'App\Http\Controllers\PermisosController@index')->name('permisos.index')->middleware('auth.admin');
+Route::resource('permisos', 'App\Http\Controllers\PermisosController')->middleware('auth.admin');
 

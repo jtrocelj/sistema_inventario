@@ -1,4 +1,4 @@
-@extends('layouts.mainAdmin')
+@extends('layouts.main')
 
 
 
@@ -67,7 +67,13 @@
                                                                 <td>{{ $user->name }}</td>
                                                                 <td>{{ $user->email }}</td>
                                                                 <td>{{ $user->telefono }}</td>
-                                                                <td>{{ $user->rol }}</td>
+                                                                <td>
+                                                                    @forelse ($user->roles as $role)
+                                                                      <span class="badge badge-info">{{ $role->name }}</span>
+                                                                    @empty
+                                                                      <span class="badge badge-danger">Sin rol</span>
+                                                                    @endforelse
+                                                                  </td>
                                                                 
 
                                                                 <td>

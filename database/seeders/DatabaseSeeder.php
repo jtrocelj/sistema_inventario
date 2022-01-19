@@ -31,7 +31,7 @@ class DatabaseSeeder extends Seeder
         $users->status = 'ACTIVO';
 
         $users->save();
-        $this->call(DenominacionSeeder::class);
+
         $this->call(CategoriaSeeder::class);
         $this->call(ProductoSeeder::class);
         $this->call(ClienteSeeder::class);

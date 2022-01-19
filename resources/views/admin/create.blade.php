@@ -1,4 +1,4 @@
-@extends('layouts.mainAdmin', ['title' => __('User Profile')])
+@extends('layouts.main', ['title' => __('User Profile')])
 @include('layouts.headers.cards2')
 @section('content')
     
@@ -66,10 +66,11 @@
                                 </div>
                                 <div class="form-group{{ $errors->has('rol') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-telefono">{{ __('Rol') }}</label>
-                                    <select class="form-control" name="rol">
+                                    <select class="form-control"  name="rol">
                                         <option value="Elegir" disabled>Elegir</option>
-                                        <option value="admin" >admin</option>
-                                        <option value="empleado" >empleado</option>
+                                        @foreach ($roles as $id => $role)
+                                        <option value="{{$id}}" name="rol"> {{ $role }}</option>
+                                        @endforeach
                                     </select>
                                     @if ($errors->has('rol'))
                                         <span class="invalid-feedback" role="alert">
@@ -77,6 +78,8 @@
                                         </span>
                                     @endif
                                 </div>
+
+                                
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-success mt-4">{{ __('Guardar') }}</button>
                                 </div>

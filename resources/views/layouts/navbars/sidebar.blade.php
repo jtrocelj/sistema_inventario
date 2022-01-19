@@ -91,27 +91,43 @@
                         <i class="ni ni-cart text-blue "></i> {{ __('Ventas') }}
                     </a>
                 </li>
+              
                 <li class="nav-item ">
                     <a class="nav-link" href="{{route('roles.index')}}">
                         <i class="ni ni-key-25 text-blue"></i> {{ __('Rol') }}
                     </a>
                 </li>
+           
+                
                 <li class="nav-item ">
                     <a class="nav-link" href="{{route('permisos.index')}}">
                         <i class="ni ni-lock-circle-open text-blue"></i> {{ __('Permisos') }}
                     </a>
                 </li>
+            
+         
+                <li class="nav-item">
+                    <a class="nav-link active" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
+                        <i class="ni ni-circle-08 text-blue"></i>
+                        <span class="nav-link-text" >{{ __('Usuarios') }}</span>
+                    </a>
                
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="ni ni-circle-08 text-blue"></i> {{ __('Usuarios') }}
-                    </a>
+                    <div class="collapse show" id="navbar-examples">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('users') }}">
+                                    {{ __('Listado') }}
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('admin.create')}}" >
+                                    {{ __('Registrar') }}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('denominacion.index')}}">
-                        <i class="ni ni-money-coins text-blue"></i> {{ __('Monedas') }}
-                    </a>
-                </li>
+      
                 <li class="nav-item">
                     <a class="nav-link" href="#">
                         <i class="ni ni-book-bookmark text-blue"></i> {{ __('Arqueos') }}

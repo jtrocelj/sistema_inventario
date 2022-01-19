@@ -101,11 +101,7 @@
                         <i class="ni ni-lock-circle-open text-blue"></i> {{ __('Permisos') }}
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="ni ni-active-40 text-blue"></i> {{ __('Asignar') }}
-                    </a>
-                </li>
+               
                 <li class="nav-item">
                     <a class="nav-link" href="#">
                         <i class="ni ni-circle-08 text-blue"></i> {{ __('Usuarios') }}

@@ -63,6 +63,7 @@
                                                       <thead class="thead-dark">
                                                       <th scope="col" class="sort text-center" data-sort="budget">Id</th>
                                                       <th scope="col" class="sort text-center" data-sort="budget">Descripción</th>
+                                                      <th scope="col" class="sort text-center" data-sort="budget">Permisos</th>
                                                       <th scope="col" class="sort text-center" data-sort="name">Acción</th>
                                                       
                                                           </thead>
@@ -70,7 +71,13 @@
                                                             @foreach($roles as $role)
                                                             <td class="text-center">{{$role->id}}</td>
                                                               <td class="text-center">{{$role->name}}</td>
-                                                        
+                                                              <td class="text-center">
+                                                                  @forelse ($role->permissions as $permission)
+                                                                      <span class="badge badge-info">{{ $permission->name }}</span>
+                                                                  @empty
+                                                                      <span class="badge badge-danger">Sin permiso añadido</span>
+                                                                  @endforelse
+                                                                </td>
                                                                       <td class="text-center">
                                                                         
                                                                           

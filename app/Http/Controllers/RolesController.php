@@ -12,8 +12,10 @@ use DB;
 
 class RolesController extends Controller
 {
+
+    
     use WithPagination;
-    public $name, $search, $selected_id;
+    public $name, $search, $selected_id, $permissions;
     private $pagination = 5;
 
     public function paginationView(){
@@ -27,20 +29,27 @@ class RolesController extends Controller
                 $roles = Role::where('name' , 'like', '%'.$this->search . '%')->paginate($this->pagination);
             else
                 $roles = Role::orderBy('id', 'asc')->paginate($this->pagination);
-
-            return view('roles.index', ['roles' => $roles])
+                $permissions = Permission::all()->pluck('name', 'id');
+            return view('roles.index', ['roles' => $roles, 'permissions' => $permissions])
             ->extends('layouts.main')
             ->section('content');
     
       
     }
-
+    public function create()
+    {
+        $permissions = Permission::all()->pluck('name', 'id');
+        return view('roles.create', compact('permissions'));
+    }
     public function store(Request $request){
        
 
 
         $role = new Role();
         $role->name = $request->name;
+        // $role->permissions()->sync($request->input('permissions', []));
+        $role->syncPermissions($request->input('permissions', []));
+        
         $role->save();
         return redirect()->route('roles.index')
             ->with('success', 'Rol creado exitosamente.');

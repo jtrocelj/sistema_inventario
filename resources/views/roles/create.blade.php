@@ -1,5 +1,4 @@
 
-
 <form action="{{ route('roles.store') }}" method="post" enctype="multipart/form-data">
 {{ csrf_field() }}
     
@@ -24,6 +23,39 @@
                             <label>Nombre</label>
                                 <input type="text" class="form-control" required name="name" placeholder="Nombre del rol">
                                 @error('name') <spam class="text-danger er">{{$message}}</spam> @enderror
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="name" class="col-sm-2 col-form-label">Permisos</label>
+                            <div class="col-sm-7">
+                            <div class="form-group">
+                                <div class="tab-content">
+                                <div class="tab-pane active">
+                                    <table class="table">
+                                    <tbody>
+                                        @foreach ($permissions as $id => $permiso)
+                                        <tr>
+                                        <td>
+                                            <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input class="form-check-input" type="checkbox" name="permissions[]"
+                                                value="{{ $id }}">
+                                                <span class="form-check-sign">
+                                                <span class="check"></span>
+                                                </span>
+                                            </label>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            {{ $permiso}}
+                                        </td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                    </table>
+                                </div>
+                                </div>
+                            </div>
                             </div>
                         </div>
 

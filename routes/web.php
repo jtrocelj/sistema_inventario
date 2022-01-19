@@ -71,3 +71,4 @@ Route::resource('roles', 'App\Http\Controllers\RolesController')->middleware('au
 
 Route::get('permisos', 'App\Http\Controllers\PermisosController@index')->name('permisos.index')->middleware('auth');
 Route::resource('permisos', 'App\Http\Controllers\PermisosController')->middleware('auth');
+

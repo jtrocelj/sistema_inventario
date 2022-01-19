@@ -65,7 +65,7 @@
 
                                                               </select>
                                                             </div>
-                                                            <button wire:click.prevent="SyncAll()" type="button" class="btn btn-dark mbmobile inblock mr-5">Sincronizar Todos</button>
+                                                            <button onclick="SyncAll()" type="button" class="btn btn-dark mbmobile inblock mr-5">Sincronizar Todos</button>
                                                             <button onclick="Revocar()" type="button" class="btn btn-dark mbmobile  mr-5">Revocar Todos</button>
                                                         </div>
 

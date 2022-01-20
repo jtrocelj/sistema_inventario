@@ -58,9 +58,11 @@
                                               @endif
 
                                               <div class="col-lg-40  text-right  ">
+                                                      @can('Productos_Crear')
                                                         <a href="#" data-toggle="modal" data-target="#ModalCreateProducto" class="btn btn-sm btn-neutral" >
                                                         Agregar
                                                         </a>
+                                                        @endcan
                                                        </div><br>
                                                       <table class="table align-items-center table-dark table-flush">
                                                       <thead class="thead-dark">
@@ -91,15 +93,18 @@
                                                                 
                                                               </td>
                                                                       <td>
+                                                                          @can('Productos_Editar')
                                                                               <a class="btn btn-sm btn-success" href="#" data-toggle="modal" data-target="#ModalEditProducto{{$producto->id}}">
                                                                               <i class="fa fa-fw fa-edit"></i>
                                                                               </a>
-                                                                             
+                                                                              @endcan
+
+                                                                              @can('Productos_Eliminar')
                                                                               @csrf
                                                                                @method('DELETE')
                                                                               <button type="submit" class="btn btn-danger btn-sm" 
                                                                               data-toggle="modal" data-target="#ModalDeleteProducto{{$producto->id}}"><i class="fa fa-fw fa-trash"></i></button>
-                                                                        
+                                                                              @endcan
                                                                            
                                                         
                                                                       </td>

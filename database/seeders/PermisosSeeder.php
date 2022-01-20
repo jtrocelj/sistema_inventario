@@ -45,7 +45,11 @@ class PermisosSeeder extends Seeder
             'name'=> 'Vender'
         ]);Permission::create( [ 
             'name'=> 'Ventas'
-        ]);Permission::create( [ 
+        ]);
+        Permission::create( [ 
+            'name'=> 'Rol'
+        ]);
+        Permission::create( [ 
             'name'=> 'Permisos'
         ]);
         Permission::create( [ 

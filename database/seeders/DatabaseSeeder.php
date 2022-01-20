@@ -13,15 +13,23 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call(RolSeeder::class);
+       
         $users = new User;
-        $users->name = 'Administrator';
+        
+        $users->name = 'Administrador';
         $users->email = 'admin@admin.com';
         $users->password = bcrypt('12345678');
         $users->rol = 'admin';
         $users->telefono = '73053480';
         $users->status = 'ACTIVO';
+       
+        $users->assignRole('admin');
         $users->save();
-        
+
+      
+
+
         $users = new User;
         $users->name = 'Jorge Trocel Justiniano';
         $users->email = 'andrestrocel44@gmail.com';
@@ -30,13 +38,15 @@ class DatabaseSeeder extends Seeder
         $users->telefono = '71123451';
         $users->status = 'ACTIVO';
 
+        $users->assignRole('empleado');
         $users->save();
 
         $this->call(CategoriaSeeder::class);
         $this->call(ProductoSeeder::class);
         $this->call(ClienteSeeder::class);
         $this->call(PermisosSeeder::class);
-        $this->call(RolSeeder::class);
+        $this->call(RoleHasPermissionSeeder::class);
+        
 
     }
 }

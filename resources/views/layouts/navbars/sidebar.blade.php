@@ -64,48 +64,63 @@
             </form>
             <!-- Navigation -->
             <ul class="navbar-nav">
+                @can('Categorias')
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('categoria.index')}}">
                         <i class="ni ni-archive-2 text-blue"></i> {{ __('Categorias') }}
                     </a>
                 </li>
+                @endcan
+
+                @can('Productos')
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('producto.index')}}">
                         <i class="ni ni-tag text-blue"></i> {{ __('Productos') }}  
                     </a>
                 </li>
+                @endcan
 
+                @can('Clientes')
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('clientes.index')}}">
                         <i class="ni ni-single-02 text-blue "></i> {{ __('Clientes') }}
                     </a>
                 </li>
+                @endcan
 
+                @can('Vender')
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('pos.index')}}">
                         <i class="ni ni-shop text-blue "></i> {{ __('Vender') }}
                     </a>
                 </li>
+                @endcan
+
+                @can('Ventas')
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('ventas.index')}}">
                         <i class="ni ni-cart text-blue "></i> {{ __('Ventas') }}
                     </a>
                 </li>
-              
+                @endcan
+
+                @can('Rol')
                 <li class="nav-item ">
                     <a class="nav-link" href="{{route('roles.index')}}">
                         <i class="ni ni-key-25 text-blue"></i> {{ __('Rol') }}
                     </a>
                 </li>
-           
+                @endcan
                 
+                @can('Permisos')
                 <li class="nav-item ">
                     <a class="nav-link" href="{{route('permisos.index')}}">
                         <i class="ni ni-lock-circle-open text-blue"></i> {{ __('Permisos') }}
                     </a>
                 </li>
-            
-         
+                @endcan
+               
+                @can('Usuarios')
                 <li class="nav-item">
                     <a class="nav-link active" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
                         <i class="ni ni-circle-08 text-blue"></i>
@@ -127,17 +142,22 @@
                         </ul>
                     </div>
                 </li>
-      
+                @endcan
+                
+                @can('Arqueos')
                 <li class="nav-item">
                     <a class="nav-link" href="#">
                         <i class="ni ni-book-bookmark text-blue"></i> {{ __('Arqueos') }}
                     </a>
                 </li>
+                @endcan
+                @can('Reportes')
                 <li class="nav-item">
                     <a class="nav-link" href="#">
                         <i class="ni ni-chart-pie-35 text-blue"></i> {{ __('Reportes') }}
                     </a>
                 </li>
+                @endcan
                
             </ul>
             <!-- Divider -->

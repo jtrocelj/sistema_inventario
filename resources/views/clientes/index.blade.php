@@ -55,9 +55,12 @@
                                               @endif
 
                                               <div class="col-lg-40  text-right  ">
+                                                       @can('Clientes_Crear')
                                                         <a href="#" data-toggle="modal" data-target="#ModalCreateCliente" class="btn btn-sm btn-neutral" >
                                                         Agregar
                                                         </a>
+                                                        @endcan
+
                                                        </div><br>
                                                       <table class="table align-items-center table-dark table-flush">
                                                       <thead class="thead-dark">
@@ -77,16 +80,19 @@
 
                                                                       <td class="text-center">
                                                                         
-                                                                          
+                                                                            @can('Clientes_Editar')
                                                                               <a class="btn btn-sm btn-success" href="#" data-toggle="modal" data-target="#ModalEditCliente{{$cliente->id}}">
                                                                               <i class="fa fa-fw fa-edit"></i>
                                                                               </a>
+                                                                              @endcan
                                                                              
+                                                                              @can('Clientes_Eliminar')
                                                                               @csrf
                                                                                @method('DELETE')
                                                                               <button type="submit" class="btn btn-danger btn-sm" 
                                                                               data-toggle="modal" data-target="#ModalDeleteCliente{{$cliente->id}}" 
                                                                             ><a></a><i class="fa fa-fw fa-trash"></i></button>
+                                                                            @endcan
                                                                         
                                                                            
                                                         

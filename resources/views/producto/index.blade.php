@@ -59,7 +59,7 @@
 
                                               <div class="col-lg-40  text-right  ">
                                                       @can('Productos_Crear')
-                                                        <a href="#" data-toggle="modal" data-target="#ModalCreateProducto" class="btn btn-sm btn-neutral" >
+                                                        <a href="#"data-toggle="modal" data-target="#ModalCreateProducto" class="btn btn-sm btn-neutral" >
                                                         Agregar
                                                         </a>
                                                         @endcan

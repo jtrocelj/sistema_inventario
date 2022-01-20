@@ -13,7 +13,11 @@ use DB;
 class RolesController extends Controller
 {
 
-    
+    public function __construct(){
+        $this->middleware('auth.admin');
+    }
+
+        
     use WithPagination;
     public $name, $search, $selected_id, $permissions;
     private $pagination = 5;

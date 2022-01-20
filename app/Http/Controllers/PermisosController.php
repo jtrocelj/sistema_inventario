@@ -12,6 +12,10 @@ use DB;
 
 class PermisosController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth.admin');
+    }
+    
     use WithPagination;
     public $name, $search, $selected_id;
     private $pagination = 10;

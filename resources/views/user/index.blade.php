@@ -38,6 +38,7 @@
               <h3 class="text-white mb-0">Tabla de usuarios</h3>
             </div>
             <div class="table-responsive">
+            @include("notificacion")
                                         @if ($message = Session::get('success'))
                                         <div class="alert alert-success alert-dismissible fade show" role="alert">
                                                 <span class="alert-inner--icon"><i class="ni ni-like-2"></i></span>
@@ -77,14 +78,18 @@
                                                                 
 
                                                                 <td>
-                                                                    <form action="{{ route('users.destroy',$user->id) }}" method="POST">
+                                                                    
                                                                         <a class="btn btn-sm btn-primary " href="{{ route('users.show',$user->id) }}"><i class="fa fa-fw fa-eye"></i></a>
-                                                                        <a class="btn btn-sm btn-success" href="{{ route('users.edit',$user->id) }}"><i class="fa fa-fw fa-edit"></i></a>
+                                                                        <a class="btn btn-sm btn-success" data-toggle="modal" data-target="#ModalEditUser{{$user->id}}"><i class="fa fa-fw fa-edit"></i></a>
                                                                         @csrf
-                                                                        @method('DELETE')
-                                                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirmarEliminar()"><i class="fa fa-fw fa-trash"></i></button>
-                                                                    </form>
+                                                                               @method('DELETE')
+                                                                              <button type="submit" class="btn btn-danger btn-sm" 
+                                                                              data-toggle="modal" data-target="#ModalDeleteUser{{$user->id}}" 
+                                                                            ><a></a><i class="fa fa-fw fa-trash"></i></button>
+                                                                      <h3>@include('user.edit')</h3>
                                                                 </td>
+
+                                                                @include('user.delete')
                                                             </tr>
                                                         @endforeach
                                                     </tbody>

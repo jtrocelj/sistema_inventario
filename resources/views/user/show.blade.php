@@ -1,4 +1,4 @@
-@extends('layouts.mainAdmin')
+@extends('layouts.main')
 @include('layouts.headers.cards2')
 @section('template_title')
     {{ $user->name ?? 'Show User' }}

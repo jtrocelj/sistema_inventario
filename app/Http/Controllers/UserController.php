@@ -26,8 +26,9 @@ class UserController extends Controller
     public function index()
     {
         $users = User::orderBy('id', 'asc')->paginate($this->pagination);;
+        $roles = Role::all()->pluck('name', 'id');
 
-        return view('user.index', compact('users'))
+        return view('user.index', compact('users','roles'))
             ->with('i', (request()->input('page', 1) - 1) * $users->perPage());
     }
 
@@ -89,11 +90,11 @@ class UserController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        $user = User::find($id);
-
-        return view('user.edit', compact('user'));
+        $roles = Role::all()->pluck('name', 'id');
+        $user->load('roles');
+        return view('user.edit', compact('user', 'roles'));
     }
 
     /**
@@ -113,6 +114,8 @@ class UserController extends Controller
         $user->telefono = $request->telefono;
         $user->rol = $request->rol;
 
+        $roles = $request->input('rol', []);
+        $user->syncRoles($roles);
         $user->save();
 
         return redirect()->route('users.index')
@@ -123,11 +126,16 @@ class UserController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        $user = User::find($id)->delete();
+        if (auth()->user()->id == $user->id) {
+            return redirect()->route('users.index')
+            ->with('danger', 'No te puedes eliminar a ti mismo como usuario.');
+        }
+        $user->delete();
 
         return redirect()->route('users.index')
             ->with('success', 'Usuario eliminado exitosamente');
+           
     }
 }

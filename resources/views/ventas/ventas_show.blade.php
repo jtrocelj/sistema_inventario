@@ -2,7 +2,15 @@
 
 @section('content')
   
-    
+    <?php
+    use App\Models\Venta;
+    use App\Models\DetalleVenta;
+
+    $detalle = DetalleVenta::all()
+    ->where('id_venta','=',$venta->id);
+
+
+    ?>
     @extends('layouts.main')
     <div class="row">
         <div class="col-12">
@@ -27,13 +35,13 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach($venta->productos as $producto)
+                @foreach($detalle as $producto)
                     <tr>
                         <td>{{$producto->nombre}}</td>
                         <td>{{$producto->barcode}}</td>
                         <td>${{number_format($producto->precio, 2)}}</td>
                         <td>{{$producto->cantidad}}</td>
-                        <td>${{number_format($producto->cantidad * $producto->precio, 2)}}</td>
+                        <td>${{number_format($t = $producto->cantidad * $producto->precio, 2)}}</td>
                     </tr>
                 @endforeach
                 </tbody>
@@ -41,7 +49,22 @@
                 <tr>
                     <td colspan="3"></td>
                     <td><strong>Total</strong></td>
-                    <td>${{number_format($total, 2)}}</td>
+                    
+                    @if('detalle')
+                    @php  $mytotal = 0; @endphp
+                    @foreach($detalle as $d)
+                    @php
+                        $mytotal += $d->cantidad * $d->precio;
+
+                    @endphp
+                    @endforeach
+                  
+                    <td class="text-center">
+                        <h3 class="text-info">${{number_format($mytotal, 2)}}</h3>
+                    </td>
+                    @endif
+
+                    
                 </tr>
                 </tfoot>
             </table>

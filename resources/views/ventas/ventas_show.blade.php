@@ -68,7 +68,7 @@
                                                  <a class="btn btn-info" href="{{route('ventas.index')}}">
                                                     <i class="fa fa-arrow-left"></i>&nbsp;Volver
                                                 </a>
-                                                <a class="btn btn-success" href="{{route('ventas.ticket', ['id' => $venta->id])}}">
+                                                <a class="btn btn-success" href="{{route('ticket', ['id' => $venta->id])}}">
                                                     <i class="fa fa-print"></i>&nbsp;Ticket
                                                 </a>
                                               </div>

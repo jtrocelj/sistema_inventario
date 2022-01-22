@@ -69,7 +69,7 @@
                                                             <td class="text-center">{{$venta->cliente->apellidos}}</td>
                                                             <td class="text-center">Bs {{number_format($venta->total, 2)}}</td>
                                                             <td class="text-center">
-                                                                <a class="btn btn-info" href="{{route('ventas.ticket', ['id'=>$venta->id])}}">
+                                                                <a class="btn btn-info" href="{{route('ticket', ['id'=>$venta->id])}}">
                                                                     <i class="fa fa-print"></i>
                                                                 </a>
                                                             </td>

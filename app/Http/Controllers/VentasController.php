@@ -11,6 +11,7 @@ use App\Models\Producto;
 use Illuminate\Support\Facades\DB;
 use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
 use Mike42\Escpos\Printer;
+use PDF;
 class VentasController extends Controller
 {
     
@@ -52,6 +53,22 @@ class VentasController extends Controller
         $impresora->close();
         return redirect()->back()->with("mensaje", "Ticket impreso");
     }
+    public function pdf(Request $request){
+        $venta = Venta::findOrFail($request->get("id"));
+        $detalle = DetalleVenta::all()
+        ->where('id_venta','=',$venta->id);
+
+               
+        $pdf = PDF::loadView('ventas.factura',['detalle' => $detalle,'venta' => $venta]);
+        //$pdf->loadHTML('<h1>Test</h1>');
+        return $pdf->stream();
+
+        return view('ventas.factura', ["detalle" => $detalle,"venta" => $venta])    
+            ->extends('layouts.main')
+            ->section('content');
+    }
+
+
     public function index()
     {
         

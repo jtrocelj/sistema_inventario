@@ -60,7 +60,7 @@ Route::delete("/productoDeVenta", "App\Http\Controllers\PosController@quitarProd
 Route::post("/terminarOCancelarVenta", "App\Http\Controllers\PosController@terminarOCancelarVenta")->name("terminarOCancelarVenta")->middleware('auth');
 
 Route::resource('ventas', 'App\Http\Controllers\VentasController')->middleware('auth');
-Route::get("/ventas/ticket", "App\Http\Controllers\VentasController@ticket")->name("ventas.ticket");
+Route::get("ticket", "App\Http\Controllers\VentasController@pdf")->name("ticket");
 
 
 

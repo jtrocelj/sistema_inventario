@@ -64,6 +64,7 @@ class PosController extends Component
         $venta->id_cliente = $request->input("id_cliente");
         $venta->saveOrFail();
         $idVenta = $venta->id;
+        
         $productos = $this->obtenerProductos();
         // Recorrer carrito de compras
         foreach ($productos as $producto) {
@@ -75,6 +76,8 @@ class PosController extends Component
                 "barcode" => $producto->barcode,
                 "precio" => $producto->precio,
                 "cantidad" => $producto->cantidad,
+                "efectivo" =>  $detalleVenta->efectivo = $request->input("efectivo"),
+                "cambio" => $detalleVenta->cambio = $request->input("resultado"),
             ]);
             // Lo guardamos
             $detalleVenta->saveOrFail();

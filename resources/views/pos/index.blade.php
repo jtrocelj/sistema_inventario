@@ -117,7 +117,8 @@
                     <div class="col-sm-12 col-md-4">
                                                 <div class="row" >
                                                         <div class="col-sm-11" style="background:#1C345D; border:5px solid ;border-radius:10px;margin-left: 200%; margin-top:-460px;"><br>
-                                                                <form method="post" name="restar">
+                                                                <form action="{{route('terminarOCancelarVenta')}}"  method="post" name="restar">
+                                                                @csrf
                                                                     <div class="card div_radius" >  
                                                                         <div class="card-header">
                                                                         <h2 class="card-title">Realizar venta</h2>
@@ -133,22 +134,21 @@
                                                                                 <div class="col">
                                                                                     <div class="form-group">
                                                                                     <label for="">Efectivo: </label>
-                                                                                    <input type="text" id="efectivo" name="efectivo"  class="form-control input_style" onKeyUp="cambio();format(this)" onchange="format(this)"placeholder="Bs 0.00" autocomplete="off">
+                                                                                    <input type="text"  name="efectivo"  class="form-control input_style" onKeyUp="cambio();format(this)" onchange="format(this)"placeholder="Bs 0.00" autocomplete="off">
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col">
                                                                                     <div class="form-group">
                                                                                     <label for="">Cambio: </label>
-                                                                                    <input type="text" id="resultado" name="resultado"  class="form-control input_style" readonly placeholder="Bs 0.00"> 
+                                                                                    <input type="text"  name="resultado"  class="form-control input_style" readonly placeholder="Bs 0.00"> 
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>    
-                                                                </form><br>
-                                                                <form action="{{route('terminarOCancelarVenta')}}" method="post">
-                                                                    @csrf
+                                                                
+                                                                   
                                                                     <div class="card div_radius">  
                                                                         <div class="card-header">
                                                                             <h3 class="card-title">Datos para la factura</h3>

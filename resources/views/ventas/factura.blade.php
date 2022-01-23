@@ -189,14 +189,14 @@
                                     <tr class="tabletitle">
                                         <td></td>
                                         <td class="Rate"><h2>Efectivo</h2></td>
-                                        <td class="payment"><h2>Bs {{number_format($mytotal)}}</h2></td>
+                                        <td class="payment"><h2>Bs {{$d->efectivo}}</h2></td>
                                         
                                     </tr>
 
                                     <tr class="tabletitle">
                                         <td></td>
                                         <td class="Rate"><h2>Cambio</h2></td>
-                                        <td class="payment"><h2>Bs {{number_format($mytotal)}}</h2></td>
+                                        <td class="payment"><h2>Bs {{$d->cambio}}</h2></td>
                                         
                                     </tr>
                                     @endif

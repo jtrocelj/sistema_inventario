@@ -11,6 +11,8 @@
         margin: 0 auto;
         width: 44mm;
         background: #fff;
+        margin-top:-40px;
+        margin-left:-30px;
         }
         #invoice-POS ::selection {
         background: #f31544;
@@ -112,7 +114,7 @@
       </div>
       <div class="logo">
           <center> 
-          <img class="logo"src="img/logo.jpg">
+          <img style="margin-left:70px;" class="logo"src="img/logo.jpg">
           </center>
       </div>
      <!--End Info-->
@@ -126,6 +128,10 @@
                 <strong>Dirección:</strong> obrajes calle 6, Nro.77</br>
                 <strong> Email   :</strong> miniMarket@gmail.com</br>
                 <strong> Telefono   :</strong> 555-555-5555</br>
+                <center>
+                <h2>La paz - Bolivia</h2>
+                </center>
+                
                 </p>
         </div>
         
@@ -178,13 +184,28 @@
                                         <td></td>
                                         <td class="Rate"><h2>Total</h2></td>
                                         <td class="payment"><h2>Bs {{number_format($mytotal)}}</h2></td>
+                                        
+                                    </tr>
+                                    <tr class="tabletitle">
+                                        <td></td>
+                                        <td class="Rate"><h2>Efectivo</h2></td>
+                                        <td class="payment"><h2>Bs {{number_format($mytotal)}}</h2></td>
+                                        
+                                    </tr>
+
+                                    <tr class="tabletitle">
+                                        <td></td>
+                                        <td class="Rate"><h2>Cambio</h2></td>
+                                        <td class="payment"><h2>Bs {{number_format($mytotal)}}</h2></td>
+                                        
                                     </tr>
                                     @endif
 						</table>
 					</div><!--End Table-->
                     
 					<div id="legalcopy">
-						<p class="legal"><strong>Gracias por la compra!</strong>  
+						<p class="legal"><strong>Gracias por tu compra. Tu apoyo continuo nos dice que te gusta la manera en la que trabajamos. 
+                            Recomiéndanos con un amigo o un negocio asociado y ¡obtén un 10% de descuento en tu próxima compra!!</strong>  
 						</p>
 					</div>
 

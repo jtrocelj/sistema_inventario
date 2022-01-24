@@ -84,6 +84,13 @@ class RolesController extends Controller
 
     public function destroy($id){
       
+        $permissionsCount = Role::find($id)->permissions->count();
+        if($permissionsCount > 0){
+            return redirect()->route("roles.index")
+                ->with([
+                    "danger" => "No se puede eliminar el rol porque tiene permisos asociados",
+                ]);
+        }
 
         Role::find($id)->delete();
         return redirect()->route('roles.index')

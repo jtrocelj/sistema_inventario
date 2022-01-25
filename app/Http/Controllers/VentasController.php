@@ -22,9 +22,9 @@ class VentasController extends Controller
 
                
         $pdf = PDF::loadView('ventas.factura',['detalle' => $detalle,'venta' => $venta]);
-        //$pdf->loadHTML('<h1>Test</h1>');
-        return $pdf->stream();
-        return $pdf->download('factura');
+  
+        return $pdf->stream('Factura.pdf');
+        return $pdf->download('Factura.pdf');
 
         return view('ventas.factura', ["detalle" => $detalle,"venta" => $venta])    
             ->extends('layouts.main')

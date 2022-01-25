@@ -2,12 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
-
-use App\Http\Controllers\CategoriaController;
-
-use App\Http\Controllers\ClienteController;
-
-use App\Http\Controllers\PosController;
+use App\Http\Controllers\ReportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,3 +65,9 @@ Route::resource('roles', 'App\Http\Controllers\RolesController')->middleware('au
 Route::get('permisos', 'App\Http\Controllers\PermisosController@index')->name('permisos.index')->middleware('auth.admin');
 Route::resource('permisos', 'App\Http\Controllers\PermisosController')->middleware('auth.admin');
 
+
+
+
+Route::get('reportes_dia', [ReportController::class, 'reports_day'])->name('reports.day');
+Route::get('reports_fecha', [ReportController::class, 'reports_date'])->name('reports.date');
+Route::get("pdf", "App\Http\Controllers\ReportController@pdf")->name("pdf");

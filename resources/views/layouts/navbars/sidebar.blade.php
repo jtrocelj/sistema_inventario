@@ -144,18 +144,31 @@
                 </li>
                 @endcan
                 
-                @can('Arqueos')
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="ni ni-book-bookmark text-blue"></i> {{ __('Arqueos') }}
-                    </a>
-                </li>
-                @endcan
+            
+             
                 @can('Reportes')
+              
+
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="ni ni-chart-pie-35 text-blue"></i> {{ __('Reportes') }}
+                    <a class="nav-link active" href="#navbar-examples" data-toggle="collapse" role="button"  aria-controls="navbar-examples">
+                        <i class="ni ni-chart-pie-35 text-blue"></i>
+                        <span class="nav-link-text" >{{ __('Reportes') }}</span>
                     </a>
+               
+                    <div class="collapse show" id="navbar-examples">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('reports.day') }}">
+                                    {{ __('Reportes por día') }}
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('reports.date')}}" >
+                                    {{ __('Reportes por fecha') }}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
                 @endcan
                

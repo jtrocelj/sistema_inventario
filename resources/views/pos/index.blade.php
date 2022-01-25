@@ -134,7 +134,7 @@
                                                                                 <div class="col">
                                                                                     <div class="form-group">
                                                                                     <label for="">Efectivo: </label>
-                                                                                    <input type="text"  name="efectivo"  class="form-control input_style" onKeyUp="cambio();format(this)" onchange="format(this)"placeholder="Bs 0.00" autocomplete="off">
+                                                                                    <input type="text"  name="efectivo"  required class="form-control input_style" onKeyUp="cambio();format(this)" onchange="format(this)"placeholder="Bs 0.00" autocomplete="off">
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col">

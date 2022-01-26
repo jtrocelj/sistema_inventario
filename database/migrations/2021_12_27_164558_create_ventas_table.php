@@ -17,6 +17,7 @@ class CreateVentasTable extends Migration
             $table->id();
             $table->unsignedBigInteger('id_cliente');
         
+            
             $table->timestamps();
             $table->foreign('id_cliente')->references('id')->on('clientes')->onDelete('cascade');
         });

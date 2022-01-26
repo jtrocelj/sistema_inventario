@@ -21,6 +21,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
+
+Route::get('reportes_dia', [ReportController::class, 'reports_day'])->name('reports.day');
+Route::get('reports_fecha', [ReportController::class, 'reports_date'])->name('reports.date');
+Route::post('report_results', [ReportController::class, 'report_results'])->name('report.results');
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/admin',[AdminController::class, 'index'])
 ->middleware('auth.admin')
@@ -59,7 +64,6 @@ Route::get("ticket", "App\Http\Controllers\VentasController@pdf")->name("ticket"
 
 
 
-
 Route::resource('roles', 'App\Http\Controllers\RolesController')->middleware('auth.admin');
 
 Route::get('permisos', 'App\Http\Controllers\PermisosController@index')->name('permisos.index')->middleware('auth.admin');
@@ -68,6 +72,6 @@ Route::resource('permisos', 'App\Http\Controllers\PermisosController')->middlewa
 
 
 
-Route::get('reportes_dia', [ReportController::class, 'reports_day'])->name('reports.day');
-Route::get('reports_fecha', [ReportController::class, 'reports_date'])->name('reports.date');
+
 Route::get("pdf", "App\Http\Controllers\ReportController@pdf")->name("pdf");
+Route::get("pdfDate", "App\Http\Controllers\ReportController@pdfDate")->name("pdfDate");

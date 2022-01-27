@@ -74,4 +74,4 @@ Route::resource('permisos', 'App\Http\Controllers\PermisosController')->middlewa
 
 
 Route::get("pdf", "App\Http\Controllers\ReportController@pdf")->name("pdf");
-Route::get("pdfDate", "App\Http\Controllers\ReportController@pdfDate")->name("pdfDate");
+Route::post("pdfDate", "App\Http\Controllers\ReportController@pdfDate")->name("pdfDate");

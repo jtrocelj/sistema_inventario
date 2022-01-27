@@ -38,7 +38,7 @@
   <h3> SISTEMA DE VENTAS Y FACTURACIÓN</h3>
           <span>Reporte de Ventas por Fechas: </span>
           <div class="form-group">
-       
+              del <strong>{{\Carbon\Carbon::parse($fi)->format('d-m-Y')}}</strong> al <strong>{{\Carbon\Carbon::parse($ff)->format('d-m-Y')}}</strong>
           </div>
           <img style="margin-left:-600px; margin-top: -50px;width:100px;" class="logo"src="img/logo.jpg">
   </p>     
@@ -49,6 +49,8 @@
   <tr>
 			<th>ID</th>
 			<th>FECHA</th>
+      <th>ESTADO</th>
+      <th>CLIENTE</th>
 			<th>TOTAL</th>
 		</tr>
   </thead>
@@ -59,6 +61,8 @@
   <tr>
 			<td>{{ $v->id }}</td>
 			<td>{{\Carbon\Carbon::parse($v->created_at)->format('d-m-Y')}}</td>
+      <td>PAGADO</td>
+      <td>{{$v->cliente->apellidos}}</td>
 			<td>Bs {{number_format($v->total, 2)}}</td>
 		</tr>
     @endforeach

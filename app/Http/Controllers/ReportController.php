@@ -12,7 +12,12 @@ use Illuminate\Support\Facades\DB;
 use PDF;
 class ReportController extends Controller
 {
+    private $pagination =5;
 
+   
+    public function paginationView(){
+        return 'vendor.livewire.bootstrap';
+    }
     public function pdf(Request $request){
         
 
@@ -64,40 +69,35 @@ class ReportController extends Controller
       $total =$venta->sum('total');
         return view('reportes.fecha.report_date', compact('venta', 'total'));
     }
-    public function report_results(Request $request){
-        $fi = $request->fecha_ini. ' 00:00:00';
-        $ff = $request->fecha_fin. ' 23:59:59';
-        $venta = Venta::join("detalle_ventas", "detalle_ventas.id_venta", "=", "ventas.id")
-       
-        ->select("ventas.*","id_cliente",DB::raw("sum(detalle_ventas.cantidad * detalle_ventas.precio) as total"))
-        ->groupBy("ventas.id", "ventas.created_at", "ventas.updated_at", "ventas.id_cliente") ->orderBY('ventas.id','asc')
-       ->whereBetween('ventas.created_at', [$fi, $ff])->get();
-        $total =$venta->sum('total');
-
-        
-        return view('reportes.fecha.report_date', compact('venta', 'total'));
-    }
+  
 
     public function pdfDate(Request $request){
-    
-
+        
         $fi = $request->fecha_ini. ' 00:00:00';
         $ff = $request->fecha_fin. ' 23:59:59';
         $venta = Venta::join("detalle_ventas", "detalle_ventas.id_venta", "=", "ventas.id")
        
         ->select("ventas.*","id_cliente",DB::raw("sum(detalle_ventas.cantidad * detalle_ventas.precio) as total"))
         ->groupBy("ventas.id", "ventas.created_at", "ventas.updated_at", "ventas.id_cliente") ->orderBY('ventas.id','asc')
-       ->whereBetween('ventas.created_at', [$fi, $ff])->get();
+        ->whereBetween('ventas.created_at', [$fi, $ff])->get();
         $total =$venta->sum('total');
+    
+        if ($request->input("accion") == "pdf") {
+        
                
-        $pdf = PDF::loadView('reportes.fecha.pdf',['venta' => $venta]);
+        $pdf = PDF::loadView('reportes.fecha.pdf',compact('venta', 'total','fi','ff'));
         //$pdf->loadHTML('<h1>Test</h1>');
       
         
-        return $pdf->stream();
+        return $pdf->stream('Reporte.pdf');
         return $pdf->download('Reporte.pdf');
 
-     
+     }else{
+       
+
+        
+        return view('reportes.fecha.report_date', compact('venta', 'total'));
+     }
     }
 }
 

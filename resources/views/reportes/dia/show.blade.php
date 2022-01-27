@@ -3,18 +3,18 @@
     use App\Models\DetalleVenta;
 
     $detalle = DetalleVenta::all()
-    ->where('id_venta','=',$v->id);
+    ->where('id_venta','=',$sale->id);
 
 
     ?>
 
     
-    <div class="modal fade text-left" id="ModalShowRday{{$v->id}}" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal fade text-left" id="ModalShowRday{{$sale->id}}" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">{{ __('Detalle de Venta') }}
-                    #{{$v->id}}
+                    #{{$sale->id}}
                     </h4>
                    
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -48,7 +48,7 @@
                                                           <tfoot>
                                                             <tr>
                                                                 <td colspan="3"></td>
-                                                                <td><strong>Total</strong></td>
+                                                                <td style="color:black;"><strong>Total</strong></td>
                                                                 
                                                                 @if('detalle')
                                                                 @php  $mytotal = 0; @endphp

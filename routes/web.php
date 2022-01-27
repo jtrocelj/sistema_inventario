@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ReportController;
+use App\Exports\VentasExport;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +25,7 @@ Auth::routes();
 
 Route::get('reportes_dia', [ReportController::class, 'reports_day'])->name('reports.day');
 Route::get('reports_fecha', [ReportController::class, 'reports_date'])->name('reports.date');
-Route::post('report_results', [ReportController::class, 'report_results'])->name('report.results');
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/admin',[AdminController::class, 'index'])
@@ -75,3 +76,5 @@ Route::resource('permisos', 'App\Http\Controllers\PermisosController')->middlewa
 
 Route::get("pdf", "App\Http\Controllers\ReportController@pdf")->name("pdf");
 Route::post("pdfDate", "App\Http\Controllers\ReportController@pdfDate")->name("pdfDate");
+
+Route::get("excel", "App\Http\Controllers\ReportController@excel")->name("excel");

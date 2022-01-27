@@ -10,6 +10,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 use PDF;
+
+use App\Exports\VentasExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 class ReportController extends Controller
 {
     private $pagination =5;
@@ -28,13 +32,14 @@ class ReportController extends Controller
        
         ->groupBy("ventas.id", "ventas.created_at", "ventas.updated_at", "ventas.id_cliente") ->orderBY('ventas.id','asc')
         ->whereDate('ventas.created_at', Carbon::today('Etc/GMT+4'))->get();
-               
-        $pdf = PDF::loadView('reportes.dia.pdf',['venta' => $venta]);
+        $total = $venta->sum('total');
+
+        $pdf = PDF::loadView('reportes.dia.pdf',['venta' => $venta,"total" => $total]);
         //$pdf->loadHTML('<h1>Test</h1>');
       
         return $pdf->download('Reporte Diario.pdf');
 
-        return view('reportes.dia.pdf', ["venta" => $venta])    
+        return view('reportes.dia.pdf', ["venta" => $venta,"total" => $total])    
             ->extends('layouts.main')
             ->section('content');
     }
@@ -98,6 +103,11 @@ class ReportController extends Controller
         
         return view('reportes.fecha.report_date', compact('venta', 'total'));
      }
+    }
+
+    
+    public function excel(){
+      return Excel::download(new VentasExport,'reporte diario.xlsx');
     }
 }
 

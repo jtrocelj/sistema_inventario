@@ -44,11 +44,13 @@
   </p>     
           </div>
           </center>
-<table>
+          <table>
   <thead>
   <tr>
 			<th>ID</th>
 			<th>FECHA</th>
+      <th>ESTADO</th>
+      <th>CLIENTE</th>
 			<th>TOTAL</th>
 		</tr>
   </thead>
@@ -58,12 +60,22 @@
   @foreach($venta as $v)
   <tr>
 			<td>{{ $v->id }}</td>
-			<td>{{ date('d-m-Y', strtotime($v->created_at)) }}</td>
+			<td>{{\Carbon\Carbon::parse($v->created_at)->format('d-m-Y')}}</td>
+      <td>PAGADO</td>
+      <td>{{$v->cliente->apellidos}}</td>
 			<td>Bs {{number_format($v->total, 2)}}</td>
 		</tr>
     @endforeach
   </tbody>
-		
+  <tfoot>
+    <tr>
+      <td colspan="3"></td>
+      <td style="color:black;"><strong>Total</strong></td>
+      <td class="text-center">
+        <h3 class="text-info">Bs {{number_format($total, 2)}}</h3>
+      </td>
+    </tr>
+  </tfoot>
 		
 </table>
 

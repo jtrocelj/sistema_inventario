@@ -93,12 +93,10 @@
                                           
 
                                               <div class="col-lg-40  text-right  ">
-                                              <button  style="margin-top:30px;" class="btn btn-outline-success">Exportar a Excel <i class="fas fa-file-excel"></i></button>
-                                                  <button style="margin-top:30px; " type="submit" class="btn btn-outline-danger" name="accion" value="pdf">
-                                                        Exportar a PDF
-                                                        </button> 
+                              
+                                              <button style="margin-top:30px; " type="submit" class="btn btn-outline-danger" name="accion" value="pdf">Exportar a PDF <i class="far fa-file-pdf"></i></button> 
                                                 {!! Form::close() !!}
-
+                                           
                                                        </div><br>
                                                       <table class="table align-items-center table-dark table-flush">
                                                       <thead class="thead-dark">

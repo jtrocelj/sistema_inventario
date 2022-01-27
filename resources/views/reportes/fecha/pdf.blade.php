@@ -67,7 +67,15 @@
 		</tr>
     @endforeach
   </tbody>
-		
+  <tfoot>
+    <tr>
+      <td colspan="3"></td>
+      <td style="color:black;"><strong>Total</strong></td>
+      <td class="text-center">
+        <h3 class="text-info">Bs {{number_format($total, 2)}}</h3>
+      </td>
+    </tr>
+  </tfoot>
 		
 </table>
 

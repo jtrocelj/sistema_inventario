@@ -50,7 +50,7 @@
                                                           <tfoot>
                                                             <tr>
                                                                 <td colspan="3"></td>
-                                                                <td><strong>Total</strong></td>
+                                                                <td style="color:black;"><strong>Total</strong></td>
                                                                 
                                                                 @if('detalle')
                                                                 @php  $mytotal = 0; @endphp

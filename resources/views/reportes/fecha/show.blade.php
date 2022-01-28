@@ -7,25 +7,21 @@
 
 
     ?>
-
-    
-    <div class="modal fade text-left" id="ModalShowRdate{{$sale->id}}" tabindex="-1" role="dialog" aria-hidden="true" style="width:1300px;" >
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content"style="width:900px;">
-                <div class="modal-header">
-                    <h4 class="modal-title">{{ __('Detalle de Venta') }}
+<!-- Modal -->
+<div class="modal" id="ModalShowRday{{$sale->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style="margin-left:-100px; width:900px;">
+      <div class="modal-header">
+      <h4 class="modal-title">{{ __('Detalle de Venta') }}
                     #{{$sale->id}}
                     </h4>
-                   
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                                                       </div>
-                                                      
-                                                      <table class="table align-items-center table-dark table-flush" style="margin-top: -40px;">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
+      <table class="table align-items-center table-dark table-flush" style="margin-top: -40px;" >
                                                       <thead class="thead-dark">
                                                       <th scope="col" class="sort text-center" data-sort="budget">Descripción</th>
                                                 
@@ -70,14 +66,7 @@
                                                             </tr>
                                                             </tfoot>
                                                       </table>
-                            </div>
-                        </div>
-                    </div>   
-                    
-                  
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
-
-
+  </div>
+</div>

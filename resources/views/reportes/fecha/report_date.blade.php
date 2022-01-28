@@ -15,6 +15,12 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
 <script src="//cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
 <script src="//cdn.datatables.net/buttons/2.2.2/js/buttons.print.min.js"></script>
+
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
  <!-- Main content -->
  <div class="main-content" id="panel">
     <div class="header bg-primary pb-6">
@@ -50,6 +56,8 @@
         document.getElementById('fecha_fin').value=ano+"-"+mes+"-"+dia;
       }
 </script>
+
+
 
     <div class="card" style="height: 130px;">
 	        <div class="card-body">
@@ -130,9 +138,10 @@
                                                                             <td style="background:#172B4D;" class="text-center ">{{$sale->cliente->apellidos}}</td>
                                                                             <td style="background:#172B4D;" class="text-center ">Bs {{number_format($sale->total, 2)}}</td>
                                                                             <td style="background:#172B4D;" class="text-center" style="width: 50px;">
-                                                                            <button class="btn btn-sm btn-success" href="#" data-toggle="modal" data-target="#ModalShowRday{{$sale->id}}">
-                                                                              <i class="fa fa-fw fa-eye"></i>
-                                                                      </button>
+                                                                   
+                                                                              <button type="button" class="btn btn-success" data-toggle="modal" data-target="#ModalShowRday{{$sale->id}}">
+                                                                               <i class="fa fa-fw fa-eye"></i>
+                                                                              </button>
                                                                               <h3>@include('reportes.fecha.show')</h3>
                                                                             </td>
                                                                               

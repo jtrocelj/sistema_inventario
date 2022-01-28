@@ -2,8 +2,19 @@
     @include('layouts.headers.cards')
     
     @extends('layouts.main')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="//cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css">
 
+<script  src="//code.jquery.com/jquery-3.5.1.js"></script>
+<script  src="//cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+
+<script src="//cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
+<script src="//cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="//cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
+<script src="//cdn.datatables.net/buttons/2.2.2/js/buttons.print.min.js"></script>
  <!-- Main content -->
  <div class="main-content" id="panel">
     <div class="header bg-primary pb-6">
@@ -40,13 +51,15 @@
       }
 </script>
 
-    <div class="card">
+    <div class="card" style="height: 130px;">
 	        <div class="card-body">
-            
+          <div class="card-header bg-transparent border-0">
+                <h2 class="text-dark " style="margin-top:-30px;">Reporte de ventas por Fecha</h2>
+              </div>
             {!! Form::open(['route'=>'pdfDate','method'=>'POST']) !!}
 
-				<div class="row">
-                <div class="col-12 col-md-3">
+				<div class="row"  style="margin-top:-20px;">
+                <div class="col-12 col-md-3" >
                             <span>Fecha inicial</span>
                             <div class="form-group">
                                 <input class="form-control" type="date" 
@@ -78,85 +91,85 @@
                 </div>
                
             </div>
-    </div>  <br>    
+            {!! Form::close() !!}
+    </div>  <br>  <br>  <br> 
             <!-- Dark table -->
-           
-            <div class="row">
-              <div class="col">
-              <div class="card bg-default shadow">
-              <div class="card-header bg-transparent border-0">
-                <h3 class="text-white mb-0">Reporte de ventas por Fecha</h3>
-              </div>
-                  <div class="table-responsive mt--6">
-                  
-                                                
-                                          
-
-                                              <div class="col-lg-40  text-right  ">
-                              
-                                              <button style="margin-top:30px; " type="submit" class="btn btn-outline-danger" name="accion" value="pdf">Exportar a PDF <i class="far fa-file-pdf"></i></button> 
-                                                {!! Form::close() !!}
-                                           
-                                                       </div><br>
-                                                      <table class="table align-items-center table-dark table-flush">
-                                                      <thead class="thead-dark">
-                                                      <th scope="col" class="sort text-center" data-sort="budget">ID</th>
-                                                      <th scope="col" class="sort text-center" data-sort="budget">FECHA</th>
-                                                      <th scope="col" class="sort text-center" data-sort="budget">ESTADO</th>
-                                                      <th scope="col" class="sort text-center" data-sort="budget">CLIENTE</th>
-                                                      <th scope="col"  class="sort text-center" data-sort="name">TOTAL</th>
-                                                      <th scope="col" class="sort text-center" data-sort="name">ACCIÓN</th>
-                                                      
-                                                          </thead>
-                                                          <tbody  id="laTabla">
-                                                          @foreach($venta as $sale)
-                                                          <th scope="row" class="text-center">{{ $sale->id }}</th>
-                                                              <td class="text-center">{{\Carbon\Carbon::parse($sale->created_at)->format('d-m-Y')}}</td>
-                                                         
-                                                              <td class="text-center"><span class="badge badge-info">Pagado</span></td>
-                                                              <td class="text-center">{{$sale->cliente->apellidos}}</td>
-                                                              <td class="text-center">Bs {{number_format($sale->total, 2)}}</td>
-                                                              <td class="text-center" style="width: 50px;">
-								
-                                                                <a class="btn btn-sm btn-success" href="#" data-toggle="modal" data-target="#ModalShowRdate{{$sale->id}}">
-                                                                <i class="fa fa-fw fa-eye"></i>
-                                                                </a> 
-                                                                <h3>@include('reportes.fecha.show')</h3>
-                                                              </td>
-                                                                     
-                                                                  </tr>
-                                                            @endforeach
-                                                          </tbody>
-                                                          
-                                                      </table>
-                                                      
-                  </div>
-                                                  
-                                            
-                </div>    @include('layouts.footers.auth')
-               
-                                        
-                                      
-                                  
-                              
+            <div class="card" style="margin-top: -50px;" >
+	              <div class="card-body">
+                      <div class="row">
+                        <div class="col">
                         
-              </div> 
-</div>
-            </div>
-           
-    </div>
+                        
+                            <div class="table-responsive">
+                            
+                                                          
+                                                    
 
-  
-  <!-- Argon Scripts -->
-  <!-- Core -->
-  <script src="../assets/vendor/jquery/dist/jquery.min.js"></script>
-  <script src="../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="../assets/vendor/js-cookie/js.cookie.js"></script>
-  <script src="../assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
-  <script src="../assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
-  <!-- Argon JS -->
-  <script src="../assets/js/argon.js?v=1.2.0"></script>  
-                    
+                                                      
+                                                        
+                                                    
+                                                                </div><br>
+                                                                <table id="example" class="table align-items-center table-dark table-flush ">
+                                                                <thead class="thead-dark">
+                                                                  <tr>
+                                                                      <th scope="col" class="sort text-center" data-sort="budget">ID</th>
+                                                                      <th scope="col" class="sort text-center" data-sort="budget">FECHA</th>
+                                                                      <th scope="col" class="sort text-center" data-sort="budget">ESTADO</th>
+                                                                      <th scope="col" class="sort text-center" data-sort="budget">CLIENTE</th>
+                                                                      <th scope="col"  class="sort text-center" data-sort="name">TOTAL</th>
+                                                                      <th scope="col" class="sort text-center" data-sort="name">ACCIÓN</th>
+                                                                  </tr>
+                                                                </thead>
+                                                                    <tbody >
+                                                                    @foreach($venta as $sale)
+                                                                    <tr>
+                                                                        <td style="background:#172B4D;" scope="row" class="text-center ">{{ $sale->id }}</td>
+                                                                          
+                                                                            <td  style="background:#172B4D;"class="text-center">{{\Carbon\Carbon::parse($sale->created_at)->format('d-m-Y')}}</td>
+                                                                            <td style="background:#172B4D;" class="text-center "><span class="badge badge-info">Pagado</span></td>
+                                                                            <td style="background:#172B4D;" class="text-center ">{{$sale->cliente->apellidos}}</td>
+                                                                            <td style="background:#172B4D;" class="text-center ">Bs {{number_format($sale->total, 2)}}</td>
+                                                                            <td style="background:#172B4D;" class="text-center" style="width: 50px;">
+                                                                            <button class="btn btn-sm btn-success" href="#" data-toggle="modal" data-target="#ModalShowRday{{$sale->id}}">
+                                                                              <i class="fa fa-fw fa-eye"></i>
+                                                                      </button>
+                                                                              <h3>@include('reportes.fecha.show')</h3>
+                                                                            </td>
+                                                                              
+                                                                            </tr>
+                                                                          
+                                                                      @endforeach
+                                                                    </tbody>
+                                                                    
+                                                                </table>
+                                                                
+                            </div>
+                                                            
+                                                      
+                          </div>   
+                        
+                                                  
+                                                
+                                            
+                                        
+                                  
+                        </div> 
+                </div>
+            </div>  
+            @include('layouts.footers.auth')      
+
+    <script>
+     $(document).ready(function() {
+    $('#example').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ],
+       
+    } );
+} );
+
+</script>
 
 
 

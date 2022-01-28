@@ -159,7 +159,7 @@
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('reports.day') }}">
-                                    {{ __('Reportes por día') }}
+                                    {{ __('Reporte diario') }}
                                 </a>
                             </li>
                             <li class="nav-item">

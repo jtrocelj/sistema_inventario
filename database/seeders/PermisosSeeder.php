@@ -55,8 +55,6 @@ class PermisosSeeder extends Seeder
         Permission::create( [ 
             'name'=> 'Usuarios'
         ]);Permission::create( [ 
-            'name'=> 'Arqueos'
-        ]);Permission::create( [ 
             'name'=> 'Reportes'
         ]);
     }

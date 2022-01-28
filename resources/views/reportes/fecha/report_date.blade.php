@@ -16,7 +16,8 @@
 <script src="//cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
 <script src="//cdn.datatables.net/buttons/2.2.2/js/buttons.print.min.js"></script>
 
-
+<script src="https://cdn.jsdelivr.net/npm/datatables-buttons-excel-styles@1.2.0/js/buttons.html5.styles.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/datatables-buttons-excel-styles@1.2.0/js/buttons.html5.styles.templates.min.js"></script>
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
@@ -96,14 +97,8 @@
                         
                         
                             <div class="table-responsive">
-                            
-                                                          
-                                                    
-
-                                                      
-                                                        
-                                                    
-                                                                </div><br>
+    
+                                                                </div>
                                                                 <table id="example" class="table align-items-center table-dark table-flush ">
                                                                 <thead class="thead-dark">
                                                                   <tr>
@@ -126,9 +121,9 @@
                                                                             <td style="background:#172B4D;" class="text-center ">Bs {{number_format($sale->total, 2)}}</td>
                                                                             <td style="background:#172B4D;" class="text-center" style="width: 50px;">
                                                                    
-                                                                              <button type="button" class="btn btn-success" data-toggle="modal" data-target="#ModalShowRday{{$sale->id}}">
-                                                                               <i class="fa fa-fw fa-eye"></i>
-                                                                              </button>
+                                                                            <a class="btn btn-sm btn-success" href="#" data-toggle="modal" data-target="#ModalShowRday{{$sale->id}}">
+                                                                            <i class="fa fa-fw fa-eye"></i>
+                                                                            </a> 
                                                                               <h3>@include('reportes.fecha.show')</h3>
                                                                             </td>
                                                                               
@@ -158,9 +153,47 @@
      $(document).ready(function() {
     $('#example').DataTable( {
         dom: 'Bfrtip',
-        buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
-        ],
+        buttons: {
+            dom:{
+              button:{
+                className: 'btn'
+              }
+            },
+            buttons: [
+              {
+                extend:"copy",
+                  text: "COPY",
+                  className: 'btn btn-dark btn-sm',
+                  
+              },
+              
+              {
+                extend:"csv",
+                  text: "CSV",
+                  className: 'btn btn-secondary btn-sm',
+              },
+              {
+                  extend:"excel",
+                  text: "EXCEL",
+                  className: 'btn btn-success btn-sm',
+                  excelStyles:{
+                    template: 'blue_medium'
+                  },
+                 
+              },
+              {
+                extend:"pdf",
+                  text: "PDF",
+                  className: 'btn btn-danger btn-sm',
+                 
+              },
+
+            ],
+            
+          }
+
+
+          
        
     } );
 } );

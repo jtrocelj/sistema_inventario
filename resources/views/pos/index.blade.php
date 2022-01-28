@@ -16,7 +16,9 @@
             }
         </style>
    
-  
+   <script src="{{ asset('argon') }}/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="{{ asset('argon') }}/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('argon') }}/js/argon.js?v=1.0.0"></script>
                 <div class="col-12">
                     <h1 style="margin-left: 10px; margin-top:-80px;">Nueva venta <i class="fa fa-cart-plus"></i></h1>
                     @include("notificacion")

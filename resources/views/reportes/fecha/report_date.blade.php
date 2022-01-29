@@ -102,8 +102,8 @@
                                                                 <table id="example" class="table align-items-center table-dark table-flush ">
                                                                 <thead class="thead-dark">
                                                                   <tr>
-                                                                      <th scope="col" class="sort text-center" data-sort="budget">ID</th>
-                                                                      <th scope="col" class="sort text-center" data-sort="budget">FECHA</th>
+                                                                      <th id="1"scope="col" class="sort text-center" data-sort="budget">ID</th>
+                                                                      <th id="2"scope="col" class="sort text-center" data-sort="budget">FECHA</th>
                                                                       <th scope="col" class="sort text-center" data-sort="budget">ESTADO</th>
                                                                       <th scope="col" class="sort text-center" data-sort="budget">CLIENTE</th>
                                                                       <th scope="col"  class="sort text-center" data-sort="name">TOTAL</th>
@@ -145,14 +145,63 @@
                                         
                                   
                         </div> 
-                </div>
+                </div>@include('layouts.footers.auth') 
             </div>  
-            @include('layouts.footers.auth')      
+                 
 
     <script>
+      var idioma=
+
+{
+    "sProcessing":     "Procesando...",
+    "sLengthMenu":     "Mostrar _MENU_ registros",
+    "sZeroRecords":    "No se encontraron resultados",
+    "sEmptyTable":     "NingÃºn dato disponible en esta tabla",
+    "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+    "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+    "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+    "sInfoPostFix":    "",
+    "sSearch":         "Buscar:",
+    "sUrl":            "",
+    "sInfoThousands":  ",",
+    "sLoadingRecords": "Cargando...",
+    "oPaginate": {
+        "sFirst":    "Primero",
+        "sLast":     "Ãšltimo",
+        "sNext":     "Siguiente",
+        "sPrevious": "Anterior"
+    },
+    "oAria": {
+        "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+    },
+    "buttons": {
+        "copyTitle": 'Información copiada',
+        "copyKeys": 'Use your keyboard or menu to select the copy command',
+        "copySuccess": {
+            "_": '%d filas copiadas al portapapeles',
+            "1": '1 fila copiada al portapapeles'
+        },
+
+        "pageLength": {
+        "_": "Mostrar %d filas",
+        "-1": "Mostrar Todo"
+        }
+    }
+};
      $(document).ready(function() {
     $('#example').DataTable( {
+      
+    "paging": true,
+    "lengthChange": true,
+    "searching": true,
+    "ordering": true,
+    "info": true,
+    "autoWidth": true,
+    "language": idioma,
+    "lengthMenu": [[5,10,20, -1],[5,10,50,"Mostrar Todo"]],
         dom: 'Bfrtip',
+        
         buttons: {
             dom:{
               button:{
@@ -164,6 +213,9 @@
                 extend:"copy",
                   text: "COPY",
                   className: 'btn btn-dark btn-sm',
+                  exportOptions: {
+                        columns: [0, 1, 2, 3, 4]
+                    }
                   
               },
               
@@ -171,6 +223,9 @@
                 extend:"csv",
                   text: "CSV",
                   className: 'btn btn-secondary btn-sm',
+                  exportOptions: {
+                        columns: [0, 1, 2, 3, 4]
+                    }
               },
               {
                   extend:"excel",
@@ -178,25 +233,32 @@
                   className: 'btn btn-success btn-sm',
                   excelStyles:{
                     template: 'blue_medium'
-                  },
+                  }, exportOptions: {
+                        columns: [0, 1, 2, 3, 4]
+                    }
+                  
                  
               },
               {
                 extend:"pdf",
                   text: "PDF",
                   className: 'btn btn-danger btn-sm',
+                  exportOptions: {
+                        columns: [0, 1, 2, 3, 4]
+                    }
                  
               },
 
             ],
             
-          }
+          },
 
 
           
        
     } );
 } );
+
 
 </script>
 

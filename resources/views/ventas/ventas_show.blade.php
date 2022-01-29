@@ -1,10 +1,4 @@
-
-@section('content')
-    @include('layouts.headers.cards')
-    
-    @extends('layouts.main')
-     
-    <?php
+<?php
     use App\Models\Venta;
     use App\Models\DetalleVenta;
 
@@ -14,69 +8,40 @@
 
     ?>
 
-
-
- <!-- Main content -->
- <div class="main-content" id="panel">
-    <div class="header bg-primary pb-6">
-      <div class="container-fluid">
-        <div class="header-body ">
-
-        
-
-          <div class="row align-items-center py-4">
-          <br>
-          
-          </div>
-        
-        </div>
-      </div>
-    </div>
     
-    <!-- Page content -->
-    <div class="container-fluid mt--9 ">
-     
-     
-      
-    
+    <div class="modal fade text-left" id="ModalShowVentas{{$venta->id}}" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">{{ __('Detalle de Venta') }}
+                    #{{$venta->id}}
+                    </h4>
+                   
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                   
+                    
+                </div>
+                               
+                        
+                    
+                <div class="col-lg-40  text-left">
+              <h3>  &nbsp;&nbsp;&nbsp;&nbsp;Cliente: <small>{{$venta->cliente->apellidos}}</small><br>
 
+                  &nbsp;&nbsp;&nbsp;&nbsp;Fecha: <small>{{\Carbon\Carbon::parse($venta->created_at)->format('d-m-Y h:i:s')}}</small>
+                </h3> 
+                &nbsp;&nbsp;&nbsp;&nbsp;<a class="btn btn-success" href="{{route('ticket', ['id' => $venta->id])}}">
+                          <i class="fa fa-print"></i>&nbsp;Ticket
+                        </a> 
+                </div><br>
+
+         
             
-            <!-- Dark table -->
-           
-            <div class="row">
-              <div class="col">
-              <div class="card bg-default shadow">
-              <div class="card-header bg-transparent border-0">
-                
-                <h1 class="text-white mb-0">Detalle de venta #{{$venta->id}}</h1>
-                <h1 class="text-white mb-0">Cliente: <small>{{$venta->cliente->apellidos}}</small></h1><br><br>
-                
-              </div>
-                  <div class="table-responsive mt--6">
-                  
-                                                
-                                              @if ($message = Session::get('success'))
-                                              <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                                      <span class="alert-inner--icon"><i class="ni ni-like-2"></i></span>
-                                                      <span class="alert-inner--text"> <p>{{ $message }}</p>
-                                                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                          <span aria-hidden="true">&times;</span>
-                                                      </button>
-                                                    </div>
-                                              @endif
-                                              <div class="col-lg-40  text-right">
-                                                 <a class="btn btn-info" href="{{route('ventas.index')}}">
-                                                    <i class="fa fa-arrow-left"></i>&nbsp;Volver
-                                                </a>
-                                                <a class="btn btn-success" href="{{route('ticket', ['id' => $venta->id])}}">
-                                                    <i class="fa fa-print"></i>&nbsp;Ticket
-                                                </a>
-                                              </div>
-                                              <div class="col-lg-40  text-left  " style="margin-left:30px;">
-                                              <h2 class="text-white mb-0">Productos</h2><br>
-                                                       </div>
+                <div class="modal-body">
+                    
                                                       
-                                                      <table class="table align-items-center table-dark table-flush">
+                                                      <table class="table align-items-center table-dark table-flush" style="margin-top: -40px;">
                                                       <thead class="thead-dark">
                                                       <th scope="col" class="sort text-center" data-sort="budget">Descripción</th>
                                                       <th scope="col"  class="sort text-center" data-sort="name">Código de barras</th>
@@ -87,11 +52,11 @@
                                                           </thead>
                                                           <tbody >
                                                           @foreach($detalle as $producto)
-                                                              <td class="text-center">{{$producto->nombre}}</td>
-                                                              <td class="text-center">{{$producto->barcode}}</td>
-                                                              <td class="text-center">Bs {{number_format($producto->precio, 2)}}</td>
-                                                              <td class="text-center">{{$producto->cantidad}}</td>
-                                                              <td class="text-center">Bs {{number_format($t = $producto->cantidad * $producto->precio, 2)}}</td>
+                                                              <td class="text-center"><h4>{{$producto->nombre}}</h4></td>
+                                                              <td class="text-center"><h4>{{$producto->barcode}}</h4></td>
+                                                              <td class="text-center"><h4>Bs {{number_format($producto->precio, 2)}}</h4></td>
+                                                              <td class="text-center"><h4>{{$producto->cantidad}}</h4></td>
+                                                              <td class="text-center"><h4>Bs {{number_format($t = $producto->cantidad * $producto->precio, 2)}}</h4></td>
                                           
                                                                   </tr>
                                                             @endforeach
@@ -99,7 +64,7 @@
                                                           <tfoot>
                                                             <tr>
                                                                 <td colspan="3"></td>
-                                                                <td><strong>Total</strong></td>
+                                                                <td style="color:black;"><strong>Total</strong></td>
                                                                 
                                                                 @if('detalle')
                                                                 @php  $mytotal = 0; @endphp
@@ -119,33 +84,14 @@
                                                             </tr>
                                                             </tfoot>
                                                       </table>
-                                                  
-                  </div>
-                                                  
-                                            
-                </div>    @include('layouts.footers.auth')
-               
-                                        
-                                      
-                                  
-                              
-                        
-              </div> 
-</div>
+                            </div>
+                        </div>
+                    </div>   
+                    
+                  
+                </div>
             </div>
-           
+        </div>
     </div>
 
-  
 
-
-
-
-        
-  
-
-@endsection
-
-
-    
-  

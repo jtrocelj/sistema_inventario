@@ -99,11 +99,11 @@
                             <div class="table-responsive">
     
                                                                 </div>
-                                                                <table id="example" class="table align-items-center table-dark table-flush ">
+                                                                <table id="example" class="table align-items-center table-dark table-flush " >
                                                                 <thead class="thead-dark">
                                                                   <tr>
-                                                                      <th id="1"scope="col" class="sort text-center" data-sort="budget">ID</th>
-                                                                      <th id="2"scope="col" class="sort text-center" data-sort="budget">FECHA</th>
+                                                                      <th scope="col" class="sort text-center" data-sort="budget">ID</th>
+                                                                      <th scope="col" class="sort text-center" data-sort="budget">FECHA</th>
                                                                       <th scope="col" class="sort text-center" data-sort="budget">ESTADO</th>
                                                                       <th scope="col" class="sort text-center" data-sort="budget">CLIENTE</th>
                                                                       <th scope="col"  class="sort text-center" data-sort="name">TOTAL</th>
@@ -121,7 +121,7 @@
                                                                             <td style="background:#172B4D;" class="text-center ">Bs {{number_format($sale->total, 2)}}</td>
                                                                             <td style="background:#172B4D;" class="text-center" style="width: 50px;">
                                                                    
-                                                                            <a class="btn btn-sm btn-success" href="#" data-toggle="modal" data-target="#ModalShowRday{{$sale->id}}">
+                                                                            <a class="btn btn-sm btn-success" href="#" data-toggle="modal" data-target="#ModalShowRdate{{$sale->id}}">
                                                                             <i class="fa fa-fw fa-eye"></i>
                                                                             </a> 
                                                                               <h3>@include('reportes.fecha.show')</h3>
@@ -190,7 +190,7 @@
     }
 };
      $(document).ready(function() {
-    $('#example').DataTable( {
+      var table =$('#example').DataTable( {
       
     "paging": true,
     "lengthChange": true,
@@ -225,7 +225,10 @@
                   className: 'btn btn-secondary btn-sm',
                   exportOptions: {
                         columns: [0, 1, 2, 3, 4]
-                    }
+                    },filename: function() {
+                        return "Reporte Por Fechas"      
+                      }
+                 
               },
               {
                   extend:"excel",
@@ -235,7 +238,14 @@
                     template: 'blue_medium'
                   }, exportOptions: {
                         columns: [0, 1, 2, 3, 4]
-                    }
+                    },filename: function() {
+                        return "Reporte Por Fechas"      
+                      },    
+                        title: function() {
+                          var searchString = table.search();        
+                          return searchString.length? "Search: " + searchString : "SISTEMA DE VENTAS Y FACTURACIÓN - REPORTE POR FECHAS "
+                        }
+                 
                   
                  
               },
@@ -245,7 +255,13 @@
                   className: 'btn btn-danger btn-sm',
                   exportOptions: {
                         columns: [0, 1, 2, 3, 4]
-                    }
+                    },filename: function() {
+                        return "Reporte Por fechas"      
+                      },    
+                        title: function() {
+                          var searchString = table.search();        
+                          return searchString.length? "Search: " + searchString : "SISTEMA DE VENTAS Y FACTURACIÓN \r Reporte por Fechas "
+                        }
                  
               },
 

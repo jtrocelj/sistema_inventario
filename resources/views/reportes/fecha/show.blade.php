@@ -8,7 +8,7 @@
 
     ?>
 <!-- Modal -->
-<div class="modal" id="ModalShowRday{{$sale->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+<div class="modal" id="ModalShowRdate{{$sale->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
   <div class="modal-dialog" role="document">
     <div class="modal-content" style="margin-left:-100px; width:900px;">
       <div class="modal-header">

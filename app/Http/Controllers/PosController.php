@@ -60,6 +60,8 @@ class PosController extends Component
     }
     public function terminarVenta(Request $request)
     {
+
+        $request->validate(['efectivo' => 'required']);
         // Crear una venta
         $venta = new Venta();
         $venta->id_cliente = $request->input("id_cliente");

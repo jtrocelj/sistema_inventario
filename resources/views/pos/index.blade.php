@@ -136,17 +136,17 @@
                 </script>         
               
                    
-                            <div class="col" style="background:#172B4D;margin-left: 15px; margin-top:-15px; height:250px; width:97% "><br>
+                           
                                     <form action="{{route('terminarOCancelarVenta')}}"  method="post" name="restar">
                                     @csrf
-                                            <div class="card" style="margin-top: -10px; width:55%; height:220px" >
+                                            <div class="card" style="margin-top: -10px; width:55%; margin-left: 1%;height:250px; border:5px solid ;border-radius:10px; "  >
                                                 <div class="card-body">
                                                         <div class="card-header bg-transparent border-0">
-                                                            <h2 class="text-dark " style="margin-top:-30px;">Realizar Venta</h2>
+                                                            <h2 class="text-dark " style="margin-top:-35px;">Detalle Venta</h2>
                                                         </div>
                                         
                                                         <div >
-                                                            <div class="form-group" style="margin-top:-25px;">
+                                                            <div class="form-group" style="margin-top:-20px;">
                                                             <label for="" >Total: </label>
                                                             <input type="text" name="total" value="{{$total}} " onKeyUp="cambio();format(this)" onchange="format(this)" class="form-control text-center input_style_total" id="venttotal_venta" placeholder="00.00" readonly>
                                                             </div>
@@ -155,14 +155,18 @@
                                                             <div class="row" style="margin-top:-20px;">
                                                                 <div class="col">
                                                                     <div class="form-group">
+                                                                        
                                                                     <label for="">Efectivo: </label>
-                                                                    <input type="text"  name="efectivo"  required class="form-control input_style" onKeyUp="cambio();format(this)" onchange="format(this)"placeholder="Bs 0.00" autocomplete="off">
-                                                                    </div>
+                                                                    <input type="text"  name="efectivo"   class="form-control input_style" onKeyUp="cambio();format(this)" onchange="format(this)"placeholder="Bs 0.00" autocomplete="off">
+                                                                    @error('efectivo') <h5 class="text-danger er">{{$message}}</h5> @enderror<br>
+
+                                                                </div>
                                                                 </div>
                                                                 <div class="col">
                                                                     <div class="form-group">
                                                                     <label for="">Cambio: </label>
                                                                     <input type="text"  name="resultado"  class="form-control input_style" readonly placeholder="Bs 0.00"> 
+
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -172,7 +176,7 @@
                                             </div>    
                                     
                                        
-                                            <div class="card" style="height:200px; width:40%; margin-left:58%;margin-top:-220px; height:170px;" >
+                                            <div class="card" style="height:200px; width:40%; margin-left:58%;margin-top: -250px; height:250px; border:5px solid ;border-radius:10px; " >
                                                 <div class="card-body">
                                                         <div class="card-header bg-transparent border-0">
                                                             <h3 class="text-dark " style="margin-top:-30px;">Datos Para La Factura</h3>
@@ -190,10 +194,8 @@
                                                                         @endforeach
                                                                     </select>
                                                         </div>
-                                                </div>      
-                                            </div>  <br>                
-                                                @if(session("productos") !== null)
-                                                    <div style=" margin-left:58%;margin-top:-15px; ">
+                                                        @if(session("productos") !== null)
+                                                    <div >
                                                     <button name="accion" style="width: 100px;" value="terminar" type="submit" class="btn btn-success">Terminar</button>
                                                                                     
                                                     <button name="accion" style="width: 100px;" value="cancelar" type="submit" class="btn btn-danger">Cancelar</button>
@@ -201,6 +203,11 @@
                                                   
                                                                                     
                                                     @endif
+                                                        
+                                                </div> 
+                                                     
+                                            </div>               
+                                              
                                               
                                     </form><br> 
                             </div>  

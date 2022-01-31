@@ -27,8 +27,9 @@ class PosController extends Component
             
         }
        
-    
-        return view('pos.index',['total' => $total,'clientes' => Cliente::orderBy('id','desc')->get()])
+        $productos = $this->obtenerProductos();
+      
+        return view('pos.index',['total' => $total,'productos' => $productos,'clientes' => Cliente::orderBy('id','desc')->get()])
         ->extends('layouts.main')
         ->section('content');
     }

@@ -40,6 +40,9 @@
 <script src="{{ asset('argon') }}/vendor/jquery/dist/jquery.min.js"></script>
 <script src="{{ asset('argon') }}/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="{{ asset('argon') }}/js/argon.js?v=1.0.0"></script>
+
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
             <div class="col-12">
                 <h1 style="margin-left: 10px; margin-top:-80px;">Nueva venta <i class="fa fa-cart-plus"></i></h1>
                 @include("notificacion")
@@ -66,8 +69,7 @@
                                                   </button>
                                                 </div>
                                           @endif
-                @if(session("productos") !== null)
-                    
+                
                 
                  <div class="table-responsive" style="margin-top: -20px;">
                         <table class="table table-sm table-hover table-dark flex-table">
@@ -81,7 +83,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                                @foreach(session("productos") as $producto)
+                                @foreach($productos as $producto)
                             <tr>
                             <td class="text-center">{{$producto->barcode}}</td>
                             <td class="text-center">{{$producto->nombre}}</td>
@@ -205,44 +207,15 @@
                      
                     
 </div> 
-                @else
-                
-                <div class="col-sm-12 col-md-8"> 
-                    <div class="table-responsive " style="max-height: 650px; overflow:hidden; margin-top:-20px;">
-
-                        <table class="table table-dark table-flush mt-1">
-                            <thead class=" thead-dark text-white " >
-                                <tr>
-                                    <th class="table-th text-center text-white"> CÒDIGO DE BARRAS</th>
-                                    <th class="table-th text-center text-white">DESCRIPCIÓN</th>
-                                    <th class="table-th text-center text-white">PRECIO</th>
-                                    <th  width="13%"class="table-th text-center text-white">CANTIDAD</th>
-                                    <th class="table-th text-center text-white">QUITAR</th>
-
-                                </tr>
-                            </thead>
-                            <tbody>
-                       
-                                <tr>
-                                    <td class="text-center table-th"></td>
-                                    <td class="text-center"></td>
-                                    <td class="text-center"></td>
-                                    <td class="text-center table-th"></td>
-                                    <td class="text-center">
-                                       
-                                    </td>                                                   
-                                </tr>
-                            
-                            </tbody>
-                        </table>
-                    </div>
-                 </div>   
-                @endif
-            </div>
+              
 </div>
    
 
+<script>
+    $('#id_cliente').select2()
+    
 
+</script>
     
  
               

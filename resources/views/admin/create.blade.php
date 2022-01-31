@@ -25,8 +25,8 @@
                             <div class="pl-lg-4">
                                 <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-name">{{ __('Name') }}</label>
-                                    <input type="text" name="name" id="input-name" class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Name') }}" required autofocus>
-
+                                    <input type="text" name="name" id="input-name"  value="{{old('name')}}"  class="form-control form-control-alternative{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Name') }}"  autofocus>
+                    
                                     @if ($errors->has('name'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('name') }}</strong>
@@ -35,7 +35,7 @@
                                 </div>
                                 <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-email">{{ __('Email') }}</label>
-                                    <input type="email" name="email" id="input-email" class="form-control form-control-alternative{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email') }}"  required>
+                                    <input type="email" name="email"  value="{{old('email')}}" id="input-email" class="form-control form-control-alternative{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email') }}"  >
 
                                     @if ($errors->has('email'))
                                         <span class="invalid-feedback" role="alert">
@@ -45,7 +45,7 @@
                                 </div>
                                 <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-password">{{ __('Contraseña') }}</label>
-                                    <input type="password" name="password" id="input-password" class="form-control form-control-alternative{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ __('Contraseña') }}" value="" required>
+                                    <input type="password" name="password" id="input-password"  value="{{old('password')}}" class="form-control form-control-alternative{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ __('Contraseña') }}" >
                                     
                                     @if ($errors->has('password'))
                                         <span class="invalid-feedback" role="alert">
@@ -56,7 +56,7 @@
                             
                                 <div class="form-group{{ $errors->has('telefono') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-telefono">{{ __('Telefono') }}</label>
-                                    <input type="text" name="telefono" id="input-telefono" class="form-control form-control-alternative{{ $errors->has('telefono') ? ' is-invalid' : '' }}" placeholder="{{ __('Telefono') }}"  maxlength="8" required>
+                                    <input type="text" name="telefono" id="input-telefono"  value="{{old('telefono')}}"  class="form-control form-control-alternative{{ $errors->has('telefono') ? ' is-invalid' : '' }}" placeholder="{{ __('Telefono') }}"  maxlength="8" >
 
                                     @if ($errors->has('telefono'))
                                         <span class="invalid-feedback" role="alert">
